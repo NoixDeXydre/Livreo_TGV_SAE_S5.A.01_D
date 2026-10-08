@@ -8,14 +8,17 @@ db = db.getSiblingDB("livreo");
 // Réinitialisation de la base 
 db.Clients.drop();
 db.Commandes.drop();
-db.Tournees.drop();
 db.Depots.drop();
+db.Pieces.drop();
+db.Vehicules.drop();
+db.Tournees.drop();
  
 db.createCollection("Clients");
-db.createCollection("Commandes");
-db.createCollection("Tournees");        
+db.createCollection("Commandes");        
 db.createCollection("Depots");
 db.createCollection("Pieces");
+db.createCollection("Vehicules")
+db.createCollection("Tournees");
 
 db.Clients.insertMany([
   {
@@ -40,55 +43,6 @@ db.Clients.insertMany([
     localisation: { type: "Point", coordinates: [4.3630, 48.9560] }
   }
 ]);
-
-db.Tournees.insertOne({
- 
- _id: "tour1",
- etat: 'effectuée', // préparée/en cours/effectuée
- 
- // Pas besoin de trier !!! Voir algo
- chargement: [
-    { id_colis: "col1", id_commande: "cmd1", id_client: "cli1", poids: 44 },
-    { id_colis: "col2", id_commande: "cmd2", id_client: "cli2", poids: 40 },
-    { id_colis: "col3", id_commande: "cmd3", id_client: "cli3", poids: 8 }
-  ],
-  
-  etapes: [
-    {
-      ordre: 0, 
-      adresse: "12 Rue de l'Industrie, 51100 Reims",
-      localisation: { type: "Point", coordinates: [4.0317, 49.2583] },
-      colis: []
-    },
-    {
-      ordre: 1,
-      adresse: "25 Rue Gambetta, 51000 Châlons-en-Champagne",
-      localisation: { type: "Point", coordinates: [4.3630, 48.9560] },
-      colis: ["col3"],
-      bon_livraison: { etat: "à valider", date_validation: null }
-    },
-    {
-      ordre: 2,
-      adresse: "8 Avenue de Champagne, 51200 Épernay",
-      localisation: { type: "Point", coordinates: [3.9570, 49.0430] },
-      colis: ["col2"],
-      bon_livraison: { etat: "à valider", date_validation: null }
-    },
-    {
-      ordre: 3, 
-      adresse: "1 Rue du Citron, 51100 Reims",
-      localisation: { type: "Point", coordinates: [4.0347, 49.2628] },
-      colis: ["col1"],
-      bon_livraison: { etat: "à valider", date_validation: null }
-    },
-    {
-      ordre: 4,
-      adresse: "12 Rue de l'Industrie, 51100 Reims",
-      localisation: { type: "Point", coordinates: [4.0317, 49.2583] },
-      colis: []
-    }
-  ]
-});
 
 db.Pieces.insertOne
 (
@@ -178,3 +132,61 @@ db.Commandes.insertMany([
     ]
   }
 ]);
+
+db.Vehicules.insertOne({
+ _id: "AA-000-AA",
+ colis_max: 15,
+ poids_max: 400 // poids en kg
+});
+
+db.Tournees.insertOne({
+ 
+ _id: "tour1",
+ etat: 'effectuée', // préparée/en cours/effectuée
+
+ // Mise en place donnée en vue d'une future amélioration
+ vehicule_util: "AA-000-AA",
+ 
+ // Pas besoin de trier !!! Voir algo
+ chargement: [
+    { id_colis: "col1", id_commande: "cmd1", id_client: "cli1", poids: 44 },
+    { id_colis: "col2", id_commande: "cmd2", id_client: "cli2", poids: 40 },
+    { id_colis: "col3", id_commande: "cmd3", id_client: "cli3", poids: 8 }
+  ],
+  
+  etapes: [
+    {
+      ordre: 0, 
+      adresse: "12 Rue de l'Industrie, 51100 Reims",
+      localisation: { type: "Point", coordinates: [4.0317, 49.2583] },
+      colis: []
+    },
+    {
+      ordre: 1,
+      adresse: "25 Rue Gambetta, 51000 Châlons-en-Champagne",
+      localisation: { type: "Point", coordinates: [4.3630, 48.9560] },
+      colis: ["col3"],
+      bon_livraison: { etat: "à valider", date_validation: null }
+    },
+    {
+      ordre: 2,
+      adresse: "8 Avenue de Champagne, 51200 Épernay",
+      localisation: { type: "Point", coordinates: [3.9570, 49.0430] },
+      colis: ["col2"],
+      bon_livraison: { etat: "à valider", date_validation: null }
+    },
+    {
+      ordre: 3, 
+      adresse: "1 Rue du Citron, 51100 Reims",
+      localisation: { type: "Point", coordinates: [4.0347, 49.2628] },
+      colis: ["col1"],
+      bon_livraison: { etat: "à valider", date_validation: null }
+    },
+    {
+      ordre: 4,
+      adresse: "12 Rue de l'Industrie, 51100 Reims",
+      localisation: { type: "Point", coordinates: [4.0317, 49.2583] },
+      colis: []
+    }
+  ]
+});
