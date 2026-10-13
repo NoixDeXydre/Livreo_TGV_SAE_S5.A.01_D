@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  # Permet de lancer manuellement la CI depuis l'onglet de GitHub Actions
+  workflow_dispatch:
+
+jobs:
+  # -------------------------------------------------------------------
+  # Job 1 : API Spring Boot
+  # -------------------------------------------------------------------
+  api-tests:
+    name: API - compilation et tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api   # toutes les commandes "run" partent de api/
+
+    steps:
+      # Récupère le code source du dépôt sur la machine virtuelle
+      - name: Récupération du code
+        uses: actions/checkout@v7
+
+      # Installe le JDK 21 et met en cache
+      # le dépôt Maven local (~/.m2) pour accélérer les runs suivants
+      - name: Installation de Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: api/pom.xml
+
+      # Compile, lance les tests et package l'API
+      # Le workflow échoue si un seul test échoue
+      - name: Compilation et tests de l'API
+        run: ./mvnw -B verify
+
+  # -------------------------------------------------------------------
+  # Job 2 : Application mobile Android
+  # -------------------------------------------------------------------
+  mobile-tests:
+    name: Mobile - tests unitaires
+    runs-on: ubuntu-latest   # l'image Ubuntu inclut déjà le SDK Android
+    defaults:
+      run:
+        working-directory: mobile
+
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v7
+
+      # Android Gradle Plugin exige au minimum JDK 17
+      - name: Installation de Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+          cache-dependency-path: |
+            mobile/**/*.gradle*
+            mobile/**/gradle-wrapper.properties
+
+      # Exécute les tests unitaires JVM (dossier src/test) de la
+      # variante debug
+      - name: Tests unitaires de l'application mobile
+        run: ./gradlew testDebugUnitTest
