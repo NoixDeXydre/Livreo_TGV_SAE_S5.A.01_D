@@ -1,0 +1,119 @@
+/* =========================================================
+   Suivi de fabrication
+   1. Tableau de suivi : colonnes par état
+   2. Carte d'une pièce
+   3. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Tableau de suivi ---------- */
+.suivi {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--espace-m);
+}
+
+.suivi__colonne {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    padding: 12px;
+    border-radius: var(--rayon-l);
+    background: var(--couleur-surface-1);
+}
+
+.suivi__entete {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-s);
+    padding: var(--espace-xs) var(--espace-xs) 0;
+}
+
+.suivi__icone {
+    color: var(--couleur-texte-secondaire);
+}
+
+.suivi__colonne--en-cours .suivi__icone  { color: var(--couleur-sur-avertissement-conteneur); }
+.suivi__colonne--fabriquee .suivi__icone { color: var(--couleur-info); }
+.suivi__colonne--livree .suivi__icone    { color: var(--couleur-succes); }
+
+.suivi__titre {
+    flex: 1;
+}
+
+.suivi__nombre {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 var(--espace-s);
+    border-radius: 14px;
+    background: var(--couleur-surface-2);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.suivi__vide {
+    padding: var(--espace-s) var(--espace-xs);
+}
+
+
+/* ---------- 2. Carte d'une pièce ---------- */
+.carte-piece {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid var(--couleur-contour-leger);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-fond);
+}
+
+.carte-piece__ligne {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--espace-s);
+}
+
+.carte-piece__nom {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.carte-piece__details {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.carte-piece__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-s);
+    margin-top: var(--espace-xs);
+}
+
+.carte-piece__suivant {
+    flex: 1;
+    --bs-btn-padding-x: var(--espace-m);
+}
+
+
+/* ---------- 3. Responsive ---------- */
+@media (max-width: 900px) {
+    .suivi {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .suivi {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

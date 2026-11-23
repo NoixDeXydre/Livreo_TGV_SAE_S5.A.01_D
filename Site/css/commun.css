@@ -402,6 +402,10 @@ select.champ__saisie {
     background: var(--couleur-surface-2);
 }
 
+.bouton-icone--contour {
+    border: 1px solid var(--couleur-contour);
+}
+
 /* Pastille carrée contenant une icône (logo, avatar…) */
 .pastille-icone {
     display: flex;
