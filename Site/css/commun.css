@@ -1,0 +1,304 @@
+/* =========================================================
+   T.G.V Atelier — styles communs à toutes les pages
+   À charger APRÈS vendor/bootstrap/css/bootstrap.min.css
+   ---------------------------------------------------------
+   1. Police locale (Roboto, aucun appel externe)
+   2. Variables (thème + surcharge des variables Bootstrap)
+   3. Base
+   4. Typographie
+   5. Liens et focus
+   6. Composants Bootstrap aux couleurs du thème
+   7. Composants maison (absents de Bootstrap)
+   ========================================================= */
+
+
+/* ---------- 1. Police locale ---------- */
+@font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../assets/fonts/roboto/roboto-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("../assets/fonts/roboto/roboto-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../assets/fonts/roboto/roboto-latin-700-normal.woff2") format("woff2");
+}
+
+
+/* ---------- 2. Variables ---------- */
+:root {
+    /* Couleurs principales */
+    --couleur-primaire: #B3400F;
+    --couleur-primaire-rgb: 179, 64, 15;
+    --couleur-primaire-survol: #8A2F08;
+    --couleur-sur-primaire: #FFFFFF;
+    --couleur-primaire-conteneur: #FFDBCD;
+    --couleur-sur-primaire-conteneur: #3A0B00;
+
+    /* Surfaces */
+    --couleur-fond: #FFF8F5;
+    --couleur-surface-1: #F7ECE7;
+    --couleur-surface-2: #F1E6E1;
+    --couleur-surface-3: #EFE0DA;
+
+    /* Texte et contours */
+    --couleur-texte: #231A16;
+    --couleur-texte-secondaire: #53443D;
+    --couleur-contour: #85736B;
+    --couleur-contour-leger: #D8C2B9;
+
+    /* Focus */
+    --couleur-focus: #3A5BA0;
+
+    /* Typographie */
+    --police: "Roboto", system-ui, sans-serif;
+
+    /* Rayons */
+    --rayon-xs: 4px;
+    --rayon-s: 8px;
+    --rayon-m: 12px;
+    --rayon-l: 16px;
+    --rayon-pilule: 999px;
+
+    /* Espacements */
+    --espace-xs: 4px;
+    --espace-s: 8px;
+    --espace-m: 16px;
+    --espace-l: 24px;
+    --espace-xl: 32px;
+    --espace-xxl: 48px;
+
+    /* Variables Bootstrap remappées sur le thème */
+    --bs-body-font-family: var(--police);
+    --bs-body-color: var(--couleur-texte);
+    --bs-body-bg: var(--couleur-fond);
+    --bs-secondary-color: var(--couleur-texte-secondaire);
+    --bs-border-color: var(--couleur-contour-leger);
+    --bs-primary: var(--couleur-primaire);
+    --bs-primary-rgb: var(--couleur-primaire-rgb);
+    --bs-link-color: var(--couleur-primaire);
+    --bs-link-color-rgb: var(--couleur-primaire-rgb);
+    --bs-link-hover-color: var(--couleur-primaire-survol);
+    --bs-link-hover-color-rgb: 138, 47, 8;
+    --bs-focus-ring-color: rgba(58, 91, 160, 0.35);
+}
+
+
+/* ---------- 3. Base ---------- */
+body {
+    min-height: 100vh;
+    font-family: var(--police);
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--couleur-texte);
+    background: var(--couleur-fond);
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+img,
+svg {
+    display: block;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* ---------- 4. Typographie ---------- */
+.titre-l {
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 400;
+}
+
+.titre-m {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 400;
+}
+
+.texte-m {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.texte-s {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.texte-secondaire {
+    color: var(--couleur-texte-secondaire);
+}
+
+
+/* ---------- 5. Liens et focus ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--couleur-focus);
+    outline-offset: 2px;
+}
+
+
+/* ---------- 6. Composants Bootstrap aux couleurs du thème ---------- */
+/* Tous les boutons sont en forme de pilule */
+.btn {
+    --bs-btn-font-weight: 500;
+    --bs-btn-border-radius: var(--rayon-pilule);
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--couleur-primaire);
+    --bs-btn-border-color: var(--couleur-primaire);
+    --bs-btn-color: var(--couleur-sur-primaire);
+    --bs-btn-hover-bg: var(--couleur-primaire-survol);
+    --bs-btn-hover-border-color: var(--couleur-primaire-survol);
+    --bs-btn-hover-color: var(--couleur-sur-primaire);
+    --bs-btn-active-bg: var(--couleur-primaire-survol);
+    --bs-btn-active-border-color: var(--couleur-primaire-survol);
+    --bs-btn-active-color: var(--couleur-sur-primaire);
+    --bs-btn-disabled-bg: var(--couleur-primaire);
+    --bs-btn-disabled-border-color: var(--couleur-primaire);
+    --bs-btn-focus-shadow-rgb: var(--couleur-primaire-rgb);
+}
+
+/* Bouton de 56 px de haut (action principale d'un formulaire) */
+.btn-grand {
+    --bs-btn-padding-y: 15px;
+    --bs-btn-padding-x: var(--espace-l);
+    --bs-btn-font-size: 16px;
+    --bs-btn-line-height: 24px;
+}
+
+/* Cases à cocher */
+.form-check-input {
+    border-color: var(--couleur-contour);
+}
+
+.form-check-input:checked {
+    background-color: var(--couleur-primaire);
+    border-color: var(--couleur-primaire);
+}
+
+.form-check-input:focus {
+    border-color: var(--couleur-primaire);
+    box-shadow: 0 0 0 0.25rem rgba(var(--couleur-primaire-rgb), 0.25);
+}
+
+
+/* ---------- 7. Composants maison ---------- */
+/* Champ à contour avec libellé posé sur la bordure */
+.champ {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.champ__libelle {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    z-index: 1;
+    padding: 0 var(--espace-xs);
+    background: var(--couleur-fond);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--couleur-texte-secondaire);
+}
+
+.champ__saisie {
+    width: 100%;
+    height: 56px;
+    padding: 0 var(--espace-m);
+    border: 1px solid var(--couleur-contour);
+    border-radius: var(--rayon-xs);
+    background: transparent;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--couleur-texte);
+}
+
+.champ__saisie:focus {
+    border-color: var(--couleur-primaire);
+}
+
+/* Champ avec un bouton icône à droite (ex. afficher le mot de passe) */
+.champ--avec-action .champ__saisie {
+    padding-right: 56px;
+}
+
+.champ__action {
+    position: absolute;
+    top: 6px;
+    right: 4px;
+}
+
+/* Case à cocher + libellé sur une ligne de 48 px */
+.case {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    min-height: 48px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.case .form-check-input {
+    width: 18px;
+    height: 18px;
+    margin: 0 0 0 var(--espace-xs);
+}
+
+/* Bouton rond contenant uniquement une icône */
+.bouton-icone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--couleur-texte-secondaire);
+    cursor: pointer;
+}
+
+.bouton-icone:hover {
+    background: var(--couleur-surface-2);
+}
+
+/* Pastille carrée contenant une icône (logo, avatar…) */
+.pastille-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: var(--rayon-l);
+    background: var(--couleur-primaire-conteneur);
+    color: var(--couleur-sur-primaire-conteneur);
+}

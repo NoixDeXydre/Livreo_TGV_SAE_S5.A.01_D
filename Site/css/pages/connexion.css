@@ -1,0 +1,203 @@
+/* =========================================================
+   T.G.V Atelier — page de connexion
+   Uniquement ce que Bootstrap et commun.css ne couvrent pas
+   (l'affichage flex, les alignements et les espacements sont
+   gérés par les classes utilitaires Bootstrap dans le HTML)
+   ---------------------------------------------------------
+   1. Mise en page
+   2. Animation d'arrivée
+      2.1 Réglages (durées, courbes)
+      2.2 Chariot : trajet, flou de mouvement, ombre, freinage
+      2.3 Formulaire : apparition dans le sillage du chariot
+      2.4 Images clés
+   3. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Mise en page ---------- */
+/* Pas de barre de défilement horizontale pendant l'animation */
+.connexion {
+    overflow-x: clip;
+}
+
+/* Deux colonnes de largeur égale */
+.connexion__principal,
+.connexion__illustration {
+    flex: 1;
+}
+
+/* Colonne gauche : formulaire */
+.connexion__principal {
+    min-width: 0;
+    padding-inline: var(--espace-xl);
+}
+
+.connexion__carte {
+    max-width: 400px;
+}
+
+/* Colonne droite : illustration */
+.connexion__illustration {
+    max-width: 720px;
+    background: var(--couleur-surface-1);
+}
+
+.connexion__chariot {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+}
+
+/* Ombre portée au sol, sous les roues */
+.connexion__chariot::before {
+    content: "";
+    position: absolute;
+    left: 13%;
+    bottom: 2%;
+    width: 76%;
+    height: 7%;
+    background: radial-gradient(closest-side, rgba(35, 26, 22, 0.22), rgba(35, 26, 22, 0));
+    pointer-events: none;
+}
+
+.connexion__image {
+    width: 100%;
+}
+
+.connexion__legende {
+    max-width: 380px;
+}
+
+/* Conteneur du filtre SVG : ne prend aucune place */
+.connexion__filtres {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+
+/* ---------- 2. Animation d'arrivée ----------
+   Le chariot entre par la gauche à pleine vitesse (flou de
+   mouvement), freine fort, la charge bascule vers l'avant puis
+   se stabilise. Sur son passage, les éléments du formulaire
+   apparaissent un à un. Rien n'est joué si l'utilisateur a
+   demandé à réduire les animations.                           */
+
+@media (prefers-reduced-motion: no-preference) {
+
+    /* 2.1 Réglages */
+    :root {
+        --anim-depart: 0.2s;                                /* laisse la page s'afficher */
+        --anim-trajet: 1.3s;
+        --courbe-freinage: cubic-bezier(0.16, 1, 0.3, 1);   /* forte décélération */
+        --courbe-sortie: cubic-bezier(0.22, 1, 0.36, 1);
+        --revele-depart: 0.1s;                              /* sans chariot (< 992 px) */
+        --revele-pas: 0.06s;                                /* écart entre deux éléments */
+    }
+
+    /* 2.3 Formulaire : chaque élément glisse depuis la gauche */
+    .revele {
+        /* backwards : caché pendant l'attente, puis plus aucun style d'animation une fois fini */
+        animation: revele 0.7s var(--courbe-sortie) backwards;
+        animation-delay: calc(var(--revele-depart) + var(--i, 0) * var(--revele-pas));
+    }
+
+    .revele--1 { --i: 0; }
+    .revele--2 { --i: 1; }
+    .revele--3 { --i: 2; }
+    .revele--4 { --i: 3; }
+    .revele--5 { --i: 4; }
+    .revele--6 { --i: 5; }
+    .revele--7 { --i: 6; }
+    .revele--8 { --i: 7; }
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+
+    :root {
+        /* le formulaire attend que le chariot passe devant lui */
+        --revele-depart: 0.4s;
+    }
+
+    /* 2.2 Chariot : trajet + flou de mouvement (filtre SVG retiré à l'arrêt) */
+    .connexion__chariot {
+        will-change: transform;
+        animation:
+            chariot-trajet var(--anim-trajet) var(--courbe-freinage) var(--anim-depart) both,
+            chariot-flou 0.65s step-end var(--anim-depart) both;
+    }
+
+    /* Ombre : étirée et plus claire à grande vitesse */
+    .connexion__chariot::before {
+        animation: chariot-ombre var(--anim-trajet) var(--courbe-freinage) var(--anim-depart) both;
+    }
+
+    /* Freinage : la charge bascule autour de la roue avant puis s'amortit */
+    .connexion__chariot-charge {
+        transform-origin: 78% 92%;
+        animation: chariot-freinage 1.25s linear calc(var(--anim-depart) + 0.15s) both;
+    }
+
+    /* Légende : une fois le chariot immobile */
+    .connexion__legende {
+        animation: revele-legende 0.6s var(--courbe-sortie) 1.25s backwards;
+    }
+}
+
+
+/* 2.4 Images clés */
+@keyframes chariot-trajet {
+    from { transform: translateX(-110vw); }
+    to   { transform: none; }
+}
+
+@keyframes chariot-flou {
+    from { filter: url(#flou-mouvement); }
+    to   { filter: none; }
+}
+
+@keyframes chariot-ombre {
+    from {
+        opacity: 0.45;
+        transform: scaleX(1.35);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Oscillation amortie : chaque rebond est plus faible que le précédent */
+@keyframes chariot-freinage {
+    0%   { transform: rotate(0);         animation-timing-function: cubic-bezier(0.3, 0, 0.4, 1); }
+    20%  { transform: rotate(2.2deg);    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
+    44%  { transform: rotate(-0.9deg);   animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
+    64%  { transform: rotate(0.35deg);   animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
+    82%  { transform: rotate(-0.12deg);  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
+    100% { transform: none; }
+}
+
+/* Pas de « to » : l'élément termine sur ses styles normaux */
+@keyframes revele {
+    from {
+        opacity: 0;
+        transform: translateX(-48px);
+        filter: blur(6px);
+    }
+}
+
+@keyframes revele-legende {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}
+
+
+/* ---------- 3. Responsive (breakpoint md de Bootstrap) ---------- */
+@media (max-width: 767.98px) {
+    .connexion__principal {
+        padding-inline: var(--espace-m);
+    }
+}

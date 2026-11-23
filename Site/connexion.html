@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Seules les ressources du site sont autorisées (aucun CDN, aucune police externe) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
+    <title>Connexion · T.G.V Atelier</title>
+
+    <!-- Image du chariot chargée en priorité : elle doit être prête quand l'animation démarre -->
+    <link rel="preload" as="image" href="assets/images/chariot.webp" type="image/webp" fetchpriority="high">
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/commun.css">
+    <link rel="stylesheet" href="css/pages/connexion.css">
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+    <div class="connexion d-flex min-vh-100">
+
+        <!-- Colonne gauche : formulaire de connexion.
+             Les éléments .revele apparaissent un par un dans le sillage du chariot. -->
+        <main class="connexion__principal d-flex align-items-center justify-content-center py-4 py-md-5">
+            <div class="connexion__carte w-100 d-flex flex-column gap-4">
+
+                <header class="d-flex flex-column gap-3">
+                    <span class="pastille-icone revele revele--1">
+                        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M2 6h12v10H2z"></path>
+                            <path d="M14 9h4.5L22 12.5V16h-8"></path>
+                            <circle cx="6" cy="17.5" r="1.8"></circle>
+                            <circle cx="17.5" cy="17.5" r="1.8"></circle>
+                        </svg>
+                    </span>
+                    <h1 class="titre-l revele revele--2">T.G.V Atelier</h1>
+                    <p class="texte-m texte-secondaire revele revele--3">Connectez-vous pour gérer les clients, les commandes et les livraisons.</p>
+                </header>
+
+                <!-- Pas de back : le formulaire ne soumet rien pour l'instant -->
+                <form class="d-flex flex-column gap-4" action="#" method="post">
+
+                    <div class="champ revele revele--4">
+                        <label class="champ__libelle" for="identifiant">Identifiant</label>
+                        <input class="champ__saisie" id="identifiant" name="identifiant" type="text" placeholder="responsable01" autocomplete="username">
+                    </div>
+
+                    <div class="champ champ--avec-action revele revele--5">
+                        <label class="champ__libelle" for="mot-de-passe">Mot de passe</label>
+                        <input class="champ__saisie" id="mot-de-passe" name="mot-de-passe" type="password" placeholder="••••••••" autocomplete="current-password">
+                        <span class="champ__action">
+                            <button class="bouton-icone" type="button" aria-label="Afficher le mot de passe">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </span>
+                    </div>
+
+                    <label class="case revele revele--6">
+                        <input class="form-check-input" type="checkbox" name="rester-connecte">
+                        Rester connecté sur ce poste
+                    </label>
+
+                    <button class="btn btn-primary btn-grand w-100 revele revele--7" type="submit">Se connecter</button>
+                </form>
+
+                <p class="texte-s texte-secondaire revele revele--8">Interface Atelier · accès réservé au personnel de l’atelier</p>
+            </div>
+        </main>
+
+        <!-- Colonne droite : illustration (affichée à partir de 992 px, breakpoint lg de Bootstrap) -->
+        <aside class="connexion__illustration d-none d-lg-flex flex-column align-items-center justify-content-center gap-4 p-5">
+
+            <!-- Chariot animé :
+                 .connexion__chariot        → trajet horizontal + flou de mouvement + ombre au sol
+                 .connexion__chariot-charge → basculement de la charge au freinage -->
+            <div class="connexion__chariot">
+                <div class="connexion__chariot-charge">
+                    <picture>
+                        <source srcset="assets/images/chariot.webp" type="image/webp">
+                        <img class="connexion__image" src="assets/images/Chariot%20chargé%20de%20colis%20étiquetés.png" width="1120" height="747" alt="Chariot chargé de colis : les plus lourds en bas, les plus légers au sommet" fetchpriority="high">
+                    </picture>
+                </div>
+            </div>
+
+            <p class="connexion__legende text-center texte-m texte-secondaire">Les colis les plus lourds au fond du plateau, les plus légers au sommet : l’ordre de chargement commande l’ordre de livraison.</p>
+        </aside>
+
+    </div>
+
+    <!-- Flou de mouvement horizontal du chariot : très fort au départ, il s'efface pendant le freinage.
+         Animé en SVG (SMIL), sans JavaScript. Les temps sont calés sur l'animation CSS (départ à 0,2 s). -->
+    <svg class="connexion__filtres" width="0" height="0" aria-hidden="true" focusable="false">
+        <filter id="flou-mouvement" x="-25%" y="0" width="150%" height="100%" color-interpolation-filters="sRGB">
+            <feGaussianBlur stdDeviation="0.3 0">
+                <animate attributeName="stdDeviation" begin="0.2s" dur="0.6s" fill="freeze"
+                         values="28 0; 14 0; 3 0; 0.3 0" keyTimes="0; 0.25; 0.6; 1"
+                         calcMode="spline" keySplines="0.3 0 0.7 1; 0.3 0 0.7 1; 0.3 0 0.7 1"></animate>
+            </feGaussianBlur>
+        </filter>
+    </svg>
+</body>
+</html>
