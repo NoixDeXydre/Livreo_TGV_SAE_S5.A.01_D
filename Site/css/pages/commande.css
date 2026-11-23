@@ -1,0 +1,136 @@
+/* =========================================================
+   Commande — ajout / modification
+   1. Grille : formulaire + récapitulatif
+   2. Informations
+   3. Lignes de pièces
+   4. Zone de suppression
+   5. Récapitulatif
+   6. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Grille ---------- */
+.grille-commande {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    align-items: start;
+    gap: var(--espace-l);
+}
+
+.grille-commande__formulaire {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-l);
+    min-width: 0;
+}
+
+
+/* ---------- 2. Informations ---------- */
+/* Le haut est dégagé pour les libellés posés sur la bordure */
+.champs-commande {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espace-l) var(--espace-m);
+    padding-top: var(--espace-xs);
+}
+
+.adresse-livraison {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-s);
+}
+
+
+/* ---------- 3. Lignes de pièces ---------- */
+/* La disposition dépend de la largeur de la carte, pas de l'écran :
+   une ligne si la place suffit, sinon deux ou trois lignes par pièce */
+.pieces {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: var(--espace-xs);
+    container-type: inline-size;
+}
+
+.piece {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 44px;
+    grid-template-areas:
+        "numero      masse       masse"
+        "designation designation designation"
+        "etat        etat        supprimer";
+    align-items: center;
+    gap: var(--espace-l) var(--espace-m);
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--couleur-surface-3);
+}
+
+.piece__numero     { grid-area: numero; }
+.piece__designation{ grid-area: designation; }
+.piece__masse      { grid-area: masse; }
+.piece__etat       { grid-area: etat; }
+.piece__supprimer  { grid-area: supprimer; }
+
+@container (min-width: 520px) {
+    .piece {
+        grid-template-columns: 130px minmax(0, 1fr) 44px;
+        grid-template-areas:
+            "numero designation designation"
+            "masse  etat        supprimer";
+    }
+}
+
+@container (min-width: 820px) {
+    .piece {
+        grid-template-columns: 130px minmax(0, 1fr) 120px 240px 44px;
+        grid-template-areas: "numero designation masse etat supprimer";
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+
+/* ---------- 4. Zone de suppression ---------- */
+.zone-suppression {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--espace-m);
+}
+
+
+/* ---------- 5. Récapitulatif ---------- */
+.recapitulatif {
+    position: sticky;
+    top: var(--espace-l);
+    gap: 20px;
+}
+
+.recapitulatif__bloc {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-xs);
+}
+
+.recapitulatif__bloc:has(.etiquette) {
+    gap: var(--espace-s);
+}
+
+
+/* ---------- 6. Responsive ---------- */
+@media (max-width: 900px) {
+    .grille-commande {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .recapitulatif {
+        position: static;
+    }
+}
+
+@media (max-width: 720px) {
+    .champs-commande {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

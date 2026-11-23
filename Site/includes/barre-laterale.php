@@ -14,7 +14,7 @@ $atelierCourant = 'Atelier principal';
 
 $liensPrincipaux = [
     'tableau-de-bord' => ['Tableau de bord', 'tableau-de-bord.php', 'tableau-de-bord'],
-    'commandes'       => ['Commandes',       'commandes.php',       'commandes'],
+    'commandes'       => ['Commandes',       'liste-commandes.php', 'commandes'],
     'fabrication'     => ['Fabrication',     'fabrication.php',     'fabrication'],
     'clients'         => ['Clients',         'clients.php',         'clients'],
     'livraisons'      => ['Livraisons',      'livraisons.php',      'livraisons'],

@@ -52,7 +52,7 @@ $atelierActif = in_array($_GET['atelier'] ?? '', $ateliers, true) ? $_GET['ateli
 $commandesAtelier = array_filter($commandes, fn ($c) => $atelierActif === '' || $c['atelier'] === $atelierActif);
 $commandesAffichees = array_filter($commandesAtelier, $filtres[$filtreActif][1]);
 
-$urlFiltre = fn (string $filtre) => 'commandes.php?' . http_build_query(array_filter(['filtre' => $filtre, 'atelier' => $atelierActif]));
+$urlFiltre = fn (string $filtre) => 'liste-commandes.php?' . http_build_query(array_filter(['filtre' => $filtre, 'atelier' => $atelierActif]));
 
 $totalPieces = array_sum(array_column($commandesAffichees, 'pieces'));
 $totalMasse  = array_sum(array_column($commandesAffichees, 'masse'));
@@ -69,7 +69,7 @@ $totalMasse  = array_sum(array_column($commandesAffichees, 'masse'));
 
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/commun.css">
-    <link rel="stylesheet" href="css/pages/commandes.css">
+    <link rel="stylesheet" href="css/pages/liste-commandes.css">
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
 </head>
 <body>
@@ -105,7 +105,7 @@ $totalMasse  = array_sum(array_column($commandesAffichees, 'masse'));
                     <?php endforeach; ?>
                 </nav>
 
-                <form class="liste-deroulante" action="commandes.php" method="get">
+                <form class="liste-deroulante" action="liste-commandes.php" method="get">
                     <input type="hidden" name="filtre" value="<?= e($filtreActif) ?>">
                     <select class="liste-deroulante__choix" name="atelier" aria-label="Filtrer par atelier">
                         <option value="">Tous les ateliers</option>

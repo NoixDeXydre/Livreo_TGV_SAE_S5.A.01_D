@@ -175,7 +175,7 @@ $nbBons = count($bonsManquants);
 
                     <div class="carte__actions">
                         <a class="btn btn-primary btn-moyen" href="fabrication.php"><?= icone('fabrication', 20) ?>Suivi de fabrication</a>
-                        <a class="btn btn-contour btn-moyen" href="commandes.php">Voir les commandes</a>
+                        <a class="btn btn-contour btn-moyen" href="liste-commandes.php">Voir les commandes</a>
                     </div>
                 </section>
 
@@ -220,7 +220,7 @@ $nbBons = count($bonsManquants);
             <section class="carte carte--tableau" aria-labelledby="titre-commandes">
                 <div class="carte__entete">
                     <h2 class="titre-m" id="titre-commandes">Commandes à livrer <?= e($dateTournee) ?></h2>
-                    <a class="btn btn-texte btn-moyen" href="commandes.php">Toutes les commandes</a>
+                    <a class="btn btn-texte btn-moyen" href="liste-commandes.php">Toutes les commandes</a>
                 </div>
 
                 <div class="table-responsive">

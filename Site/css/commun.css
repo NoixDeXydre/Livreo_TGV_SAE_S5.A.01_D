@@ -79,6 +79,7 @@
     --couleur-info-conteneur: #DAE2FF;
     --couleur-sur-info-conteneur: #001A43;
     --couleur-succes: #256B2F;
+    --couleur-erreur: #BA1A1A;
     --couleur-succes-conteneur: #CDEBB0;
     --couleur-sur-succes-conteneur: #0B2A0F;
 
@@ -155,6 +156,12 @@ img {
     font-size: 22px;
     line-height: 28px;
     font-weight: 400;
+}
+
+.titre-s {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
 }
 
 .texte-m {
@@ -254,6 +261,19 @@ textarea:focus-visible {
     --bs-btn-active-color: var(--couleur-texte);
 }
 
+/* Action destructrice (suppression) */
+.btn-contour-erreur {
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: var(--couleur-erreur);
+    --bs-btn-color: var(--couleur-erreur);
+    --bs-btn-hover-bg: rgba(186, 26, 26, 0.08);
+    --bs-btn-hover-border-color: var(--couleur-erreur);
+    --bs-btn-hover-color: var(--couleur-erreur);
+    --bs-btn-active-bg: rgba(186, 26, 26, 0.12);
+    --bs-btn-active-border-color: var(--couleur-erreur);
+    --bs-btn-active-color: var(--couleur-erreur);
+}
+
 /* Bouton texte : lien d'action sans fond */
 .btn-texte {
     --bs-btn-padding-x: 12px;
@@ -319,6 +339,21 @@ textarea:focus-visible {
 
 .champ__saisie:focus {
     border-color: var(--couleur-primaire);
+}
+
+/* Liste déroulante dans un champ : flèche maison à droite */
+select.champ__saisie {
+    padding-right: 44px;
+    appearance: none;
+    cursor: pointer;
+}
+
+.champ__icone {
+    position: absolute;
+    top: 16px;
+    right: 12px;
+    color: var(--couleur-texte-secondaire);
+    pointer-events: none;
 }
 
 /* Champ avec un bouton icône à droite (ex. afficher le mot de passe) */
@@ -602,6 +637,20 @@ textarea:focus-visible {
     min-width: 0;
 }
 
+.fil-ariane {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-xs);
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--couleur-texte-secondaire);
+}
+
+.fil-ariane a {
+    font-weight: 500;
+    text-decoration: none;
+}
+
 .entete-page__actions {
     display: flex;
     align-items: center;
@@ -632,6 +681,16 @@ textarea:focus-visible {
     display: flex;
     flex-wrap: wrap;
     gap: var(--espace-s);
+}
+
+/* Carte sur fond teinté, sans bordure (récapitulatif) */
+.carte--tonale {
+    border-color: transparent;
+    background: var(--couleur-surface-2);
+}
+
+.carte--tonale .tuile {
+    background: var(--couleur-fond);
 }
 
 /* Carte dont le contenu (un tableau) va jusqu'aux bords */
