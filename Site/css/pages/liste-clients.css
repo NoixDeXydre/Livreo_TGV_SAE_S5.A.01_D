@@ -1,0 +1,186 @@
+/* =========================================================
+   Clients — liste et fiche
+   1. Grille : liste + fiche
+   2. Liste des clients
+   3. Fiche client
+   4. Commandes du client
+   5. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Grille ---------- */
+.grille-clients {
+    display: grid;
+    grid-template-columns: 400px minmax(0, 1fr);
+    align-items: start;
+    gap: var(--espace-l);
+}
+
+
+/* ---------- 2. Liste des clients ---------- */
+.liste-clients {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-s);
+}
+
+/* Le client sélectionné a une bordure de 2 px : la marge interne compense */
+.liste-clients__element {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    min-height: 72px;
+    padding: 12px var(--espace-m);
+    border: 1px solid var(--couleur-contour-leger);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-fond);
+    color: var(--couleur-texte);
+    text-decoration: none;
+}
+
+.liste-clients__element:hover {
+    background: var(--couleur-surface-1);
+    color: var(--couleur-texte);
+}
+
+.liste-clients__element[aria-current="true"] {
+    padding: 11px 15px;
+    border: 2px solid var(--couleur-primaire);
+    background: var(--couleur-primaire-legere);
+}
+
+.liste-clients__texte {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.liste-clients__nombre {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: var(--couleur-texte-secondaire);
+    white-space: nowrap;
+}
+
+
+/* ---------- 3. Fiche client ---------- */
+.fiche-client {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-l);
+    min-width: 0;
+}
+
+.fiche-client__entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--espace-m);
+}
+
+.fiche-client__identite {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    min-width: 0;
+}
+
+.fiche-client__grille {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: var(--espace-l);
+}
+
+.bloc-adresse {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    padding: var(--espace-m);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-surface-1);
+}
+
+.bloc-adresse__icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--couleur-primaire-conteneur);
+    color: var(--couleur-sur-primaire-conteneur);
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    min-height: 56px;
+}
+
+
+/* ---------- 4. Commandes du client ---------- */
+.carte--commandes {
+    gap: var(--espace-s);
+    padding-bottom: var(--espace-s);
+}
+
+.sous-titre-commandes {
+    margin: var(--espace-s) 0 0;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--couleur-primaire);
+}
+
+.sous-titre-commandes ~ .sous-titre-commandes {
+    margin-top: var(--espace-m);
+}
+
+.liste-commandes-client {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ligne-commande {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    min-height: 60px;
+    border-bottom: 1px solid var(--couleur-surface-3);
+}
+
+.ligne-commande__numero {
+    flex-shrink: 0;
+    width: 84px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.ligne-commande__details {
+    flex: 1;
+    min-width: 0;
+}
+
+.ligne-commande .etiquette {
+    align-self: center;
+}
+
+.liste-commandes-client__vide {
+    padding: var(--espace-s) 0 var(--espace-m);
+}
+
+
+/* ---------- 5. Responsive ---------- */
+@media (max-width: 900px) {
+    .grille-clients,
+    .fiche-client__grille {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

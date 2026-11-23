@@ -10,7 +10,7 @@ $liensPrincipaux = [
     'tableau-de-bord' => ['Tableau de bord', 'tableau-de-bord.php', 'tableau-de-bord'],
     'commandes'       => ['Commandes',       'liste-commandes.php', 'commandes'],
     'fabrication'     => ['Fabrication',     'fabrication.php',     'fabrication'],
-    'clients'         => ['Clients',         'clients.php',         'clients'],
+    'clients'         => ['Clients',         'liste-clients.php',   'clients'],
     'livraisons'      => ['Livraisons',      'livraisons.php',      'livraisons'],
     'boucles'         => ['Boucles',         'boucles.php',         'boucles'],
 ];

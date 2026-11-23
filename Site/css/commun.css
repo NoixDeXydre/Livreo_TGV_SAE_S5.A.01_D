@@ -53,6 +53,7 @@
     --couleur-primaire-survol: #8A2F08;
     --couleur-sur-primaire: #FFFFFF;
     --couleur-primaire-conteneur: #FFDBCD;
+    --couleur-primaire-legere: #FEF1EC;
     --couleur-sur-primaire-conteneur: #3A0B00;
 
     /* Surfaces */
@@ -404,6 +405,27 @@ select.champ__saisie {
 
 .bouton-icone--contour {
     border: 1px solid var(--couleur-contour);
+}
+
+/* Pastille ronde avec les initiales d'une personne ou d'un client */
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--couleur-primaire-conteneur);
+    color: var(--couleur-sur-primaire-conteneur);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.avatar--grand {
+    width: 56px;
+    height: 56px;
+    font-size: 18px;
 }
 
 /* Pastille carrée contenant une icône (logo, avatar…) */

@@ -26,6 +26,14 @@ function pluriel(int $n, string $singulier, string $pluriel): string
     return nombre($n) . ' ' . ($n > 1 ? $pluriel : $singulier);
 }
 
+// Initiales des deux premiers mots : « Scierie Combes » → « SC »
+function initiales(string $nom): string
+{
+    $mots = preg_split('/[\s\-]+/u', trim($nom), -1, PREG_SPLIT_NO_EMPTY);
+
+    return mb_strtoupper(implode('', array_map(fn ($m) => mb_substr($m, 0, 1), array_slice($mots, 0, 2))));
+}
+
 function pourcentage(int|float $part, int|float $total): int
 {
     return $total > 0 ? (int) round($part / $total * 100) : 0;

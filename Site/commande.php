@@ -48,7 +48,8 @@ $modification = isset($commandesExemple[$id]);
 
 $commande = $commandesExemple[$id] ?? [
     'numero'      => '',
-    'client_id'   => null,
+    // ?client= : client présélectionné (bouton « Nouvelle commande » d'une fiche client)
+    'client_id'   => isset($clients[(int) ($_GET['client'] ?? 0)]) ? (int) $_GET['client'] : null,
     'date_prevue' => '',
     'atelier_id'  => array_key_first($ateliers),
     'reference'   => '',
