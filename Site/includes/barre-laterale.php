@@ -4,13 +4,7 @@
    Attend : $pageActive (clé de la page courante, ex. 'tableau-de-bord')
    ========================================================= */
 
-// Données d'exemple : viendront de la session et de la base
-$utilisateur = [
-    'identifiant' => 'responsable01',
-    'role'        => 'Responsable des commandes',
-    'initiales'   => 'RC',
-];
-$atelierCourant = 'Atelier principal';
+require_once __DIR__ . '/utilisateur.php';
 
 $liensPrincipaux = [
     'tableau-de-bord' => ['Tableau de bord', 'tableau-de-bord.php', 'tableau-de-bord'],

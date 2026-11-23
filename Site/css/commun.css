@@ -585,6 +585,10 @@ select.champ__saisie {
     border-bottom: 1px solid var(--couleur-surface-3);
 }
 
+.barre-haute__mobile {
+    display: none;
+}
+
 .recherche {
     position: relative;
     display: flex;
@@ -1075,45 +1079,74 @@ select.champ__saisie {
 }
 
 @media (max-width: 720px) {
+    /* Barre latérale réduite à une barre d'onglets fixée en bas de l'écran */
+    :root {
+        --hauteur-barre-basse: calc(65px + env(safe-area-inset-bottom));
+    }
+
     .coque {
         flex-direction: column;
     }
 
-    .barre-laterale {
-        width: auto;
+    .coque__colonne {
+        padding-bottom: var(--hauteur-barre-basse);
     }
 
-    .barre-laterale__interieur,
-    .navigation {
-        flex-direction: row;
+    .barre-laterale {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1030;
+        width: auto;
+        border-top: 1px solid var(--couleur-surface-3);
     }
 
     .barre-laterale__interieur {
         position: static;
+        align-items: stretch;
         height: auto;
-        padding: var(--espace-s);
-        overflow-x: auto;
+        padding: var(--espace-s) var(--espace-s) calc(var(--espace-s) + env(safe-area-inset-bottom));
     }
 
-    .barre-laterale__interieur > *,
-    .navigation__lien {
-        flex-shrink: 0;
+    .marque,
+    .selecteur-atelier,
+    .profil {
+        display: none;
     }
 
     .navigation {
+        flex-direction: row;
+        gap: var(--espace-xs);
         margin-top: 0;
     }
 
-    .profil {
-        margin: 0 0 0 auto;
+    .navigation__lien {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+        height: 48px;
+        border-radius: 24px;
     }
 
     .barre-haute {
+        flex-wrap: nowrap;
+        gap: var(--espace-xs);
         padding: 12px var(--espace-m);
     }
 
     .barre-haute__date {
         display: none;
+    }
+
+    .barre-haute__mobile {
+        display: flex;
+        flex-shrink: 0;
+    }
+
+    .recherche {
+        min-width: 0;
+        margin-right: var(--espace-xs);
     }
 
     .contenu {
