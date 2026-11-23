@@ -14,7 +14,8 @@
       8.2 Contenu : en-tête de page, cartes, tuiles
       8.3 Bandeau, étiquettes d'état, progression
       8.4 Tableaux de données
-      8.5 Responsive (repères des maquettes : 1100, 900 et 720 px)
+      8.5 Filtres de liste
+      8.6 Responsive (repères des maquettes : 1100, 900 et 720 px)
    ========================================================= */
 
 
@@ -78,6 +79,8 @@
     --couleur-info-conteneur: #DAE2FF;
     --couleur-sur-info-conteneur: #001A43;
     --couleur-succes: #256B2F;
+    --couleur-succes-conteneur: #CDEBB0;
+    --couleur-sur-succes-conteneur: #0B2A0F;
 
     /* Focus */
     --couleur-focus: #3A5BA0;
@@ -731,7 +734,7 @@ textarea:focus-visible {
 }
 
 .etiquette--a-faire {
-    background: var(--couleur-surface-1);
+    border-color: var(--couleur-contour);
     color: var(--couleur-texte-secondaire);
 }
 
@@ -743,6 +746,11 @@ textarea:focus-visible {
 .etiquette--prete {
     background: var(--couleur-info-conteneur);
     color: var(--couleur-sur-info-conteneur);
+}
+
+.etiquette--livree {
+    background: var(--couleur-succes-conteneur);
+    color: var(--couleur-sur-succes-conteneur);
 }
 
 /* Barre de progression fine (élément <progress> natif) */
@@ -771,8 +779,22 @@ textarea:focus-visible {
     background: var(--couleur-primaire);
 }
 
+.progression--succes::-webkit-progress-value {
+    background: var(--couleur-succes);
+}
+
+.progression--succes::-moz-progress-bar {
+    background: var(--couleur-succes);
+}
+
 
 /* 8.4 Tableaux de données */
+/* Référence de positionnement : sinon les textes .visually-hidden des en-têtes
+   échappent au défilement horizontal et élargissent toute la page */
+.table-responsive {
+    position: relative;
+}
+
 .tableau {
     width: 100%;
     min-width: 720px;
@@ -846,8 +868,112 @@ textarea:focus-visible {
     margin-top: 6px;
 }
 
+.tableau tbody td.tableau__vide {
+    height: 96px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--couleur-texte-secondaire);
+}
 
-/* 8.5 Responsive */
+.tableau__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Liste pleine largeur : tableau encadré + ligne de synthèse */
+.panneau-tableau {
+    min-width: 0;
+    border: 1px solid var(--couleur-contour-leger);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-fond);
+    overflow: hidden;
+}
+
+.panneau-tableau__pied {
+    padding: 12px var(--espace-m);
+    background: var(--couleur-surface-1);
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--couleur-texte-secondaire);
+}
+
+
+/* 8.5 Filtres de liste */
+.barre-filtres {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filtres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-s);
+}
+
+/* Puce de filtre : un lien par valeur, la valeur active porte aria-current */
+.filtre {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espace-s);
+    height: 40px;
+    padding: 0 var(--espace-m);
+    border: 1px solid var(--couleur-contour);
+    border-radius: var(--rayon-s);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--couleur-texte);
+    text-decoration: none;
+}
+
+.filtre:hover {
+    background: var(--couleur-surface-2);
+    color: var(--couleur-texte);
+}
+
+.filtre[aria-current="true"] {
+    border-color: transparent;
+    background: var(--couleur-secondaire-conteneur);
+    color: var(--couleur-sur-secondaire-conteneur);
+}
+
+.filtre__nombre {
+    font-size: 12px;
+}
+
+.liste-deroulante {
+    position: relative;
+    display: flex;
+    min-width: 200px;
+}
+
+.liste-deroulante__choix {
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 var(--espace-m);
+    border: 1px solid var(--couleur-contour);
+    border-radius: var(--rayon-s);
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--couleur-texte);
+    appearance: none;
+    cursor: pointer;
+}
+
+.liste-deroulante__icone {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: var(--couleur-texte-secondaire);
+    pointer-events: none;
+}
+
+
+/* 8.6 Responsive */
 @media (max-width: 1100px) {
     .barre-laterale {
         width: 80px;

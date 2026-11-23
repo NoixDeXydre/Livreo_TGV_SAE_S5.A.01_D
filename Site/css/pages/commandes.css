@@ -1,0 +1,17 @@
+/* =========================================================
+   Commandes — liste
+   1. Tableau : largeur minimale et colonnes
+   ========================================================= */
+
+
+/* ---------- 1. Tableau ---------- */
+.tableau--commandes {
+    min-width: 1062px;
+}
+
+.tableau--commandes th:nth-child(1) { width: 132px; }
+.tableau--commandes th:nth-child(3) { width: 130px; }
+.tableau--commandes th:nth-child(4) { width: 120px; }
+.tableau--commandes th:nth-child(6) { width: 176px; }
+.tableau--commandes th:nth-child(7) { width: 132px; }
+.tableau--commandes th:nth-child(8) { width: 110px; }

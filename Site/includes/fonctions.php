@@ -47,6 +47,20 @@ function date_fr(DateTimeInterface $date, bool $avecAnnee = false, bool $majuscu
     return $majuscule ? ucfirst($texte) : $texte;
 }
 
+// Forme abrégée pour les tableaux : « Jeu. 8 oct. », « 1er oct. »
+function date_courte(DateTimeInterface $date, bool $avecJour = true): string
+{
+    $jours = ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'];
+    $mois  = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.',
+              'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+
+    $jour = (int) $date->format('j');
+
+    return ($avecJour ? $jours[(int) $date->format('w')] . ' ' : '')
+         . ($jour === 1 ? '1er' : $jour) . ' '
+         . $mois[(int) $date->format('n') - 1];
+}
+
 
 /* ---------- 3. Icônes ---------- */
 // Icônes au trait (24 × 24) : elles prennent la couleur du texte qui les entoure
@@ -70,6 +84,8 @@ function icone(string $nom, int $taille = 24, float $trait = 2): string
         'horloge'        => '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
         'coche'          => '<path d="M5 12.5l4.5 4.5L19 7"/>',
         'cercle'         => '<circle cx="12" cy="12" r="8"/>',
+        'modifier'       => '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+        'supprimer'      => '<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/>',
         // Pastille pleine : le disque prend la couleur du texte, la coche reste blanche
         'valide'         => '<circle cx="12" cy="12" r="10" fill="currentColor" stroke="none"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#FFFFFF" stroke-width="2.2"/>',
     ];
