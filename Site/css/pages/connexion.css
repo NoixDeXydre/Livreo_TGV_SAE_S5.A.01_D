@@ -1,9 +1,4 @@
 /* =========================================================
-   T.G.V Atelier — page de connexion
-   Uniquement ce que Bootstrap et commun.css ne couvrent pas
-   (l'affichage flex, les alignements et les espacements sont
-   gérés par les classes utilitaires Bootstrap dans le HTML)
-   ---------------------------------------------------------
    1. Mise en page
    2. Animation d'arrivée
       2.1 Réglages (durées, courbes)
@@ -77,12 +72,7 @@
 }
 
 
-/* ---------- 2. Animation d'arrivée ----------
-   Le chariot entre par la gauche à pleine vitesse (flou de
-   mouvement), freine fort, la charge bascule vers l'avant puis
-   se stabilise. Sur son passage, les éléments du formulaire
-   apparaissent un à un. Rien n'est joué si l'utilisateur a
-   demandé à réduire les animations.                           */
+/* ---------- 2. Animation d'arrivée ----------                       */
 
 @media (prefers-reduced-motion: no-preference) {
 

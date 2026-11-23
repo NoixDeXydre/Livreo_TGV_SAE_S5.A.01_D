@@ -9,6 +9,12 @@
    5. Liens et focus
    6. Composants Bootstrap aux couleurs du thème
    7. Composants maison (absents de Bootstrap)
+   8. Structure des pages de l'application
+      8.1 Coque, barre latérale, barre du haut
+      8.2 Contenu : en-tête de page, cartes, tuiles
+      8.3 Bandeau, étiquettes d'état, progression
+      8.4 Tableaux de données
+      8.5 Responsive (repères des maquettes : 1100, 900 et 720 px)
    ========================================================= */
 
 
@@ -59,6 +65,19 @@
     --couleur-texte-secondaire: #53443D;
     --couleur-contour: #85736B;
     --couleur-contour-leger: #D8C2B9;
+
+    /* Couleurs secondaires (boutons tonals, lien actif) */
+    --couleur-secondaire-conteneur: #F7DED3;
+    --couleur-sur-secondaire-conteneur: #2C160D;
+
+    /* États */
+    --couleur-avertissement-conteneur: #FCD6A4;
+    --couleur-sur-avertissement-conteneur: #3B2400;
+    --couleur-info: #3A5BA0;
+    --couleur-sur-info: #FFFFFF;
+    --couleur-info-conteneur: #DAE2FF;
+    --couleur-sur-info-conteneur: #001A43;
+    --couleur-succes: #256B2F;
 
     /* Focus */
     --couleur-focus: #3A5BA0;
@@ -191,6 +210,61 @@ textarea:focus-visible {
     --bs-btn-line-height: 24px;
 }
 
+/* Bouton de 44 px de haut (actions courantes) ; marge réduite côté icône */
+.btn-moyen {
+    --bs-btn-padding-y: 11px;
+    --bs-btn-padding-x: var(--espace-l);
+    --bs-btn-font-size: 14px;
+    --bs-btn-line-height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espace-s);
+    white-space: nowrap;
+}
+
+.btn-moyen:has(> svg:first-child) {
+    padding-left: var(--espace-m);
+}
+
+.btn-tonal {
+    --bs-btn-bg: var(--couleur-secondaire-conteneur);
+    --bs-btn-border-color: var(--couleur-secondaire-conteneur);
+    --bs-btn-color: var(--couleur-sur-secondaire-conteneur);
+    --bs-btn-hover-bg: color-mix(in srgb, var(--couleur-sur-secondaire-conteneur) 8%, var(--couleur-secondaire-conteneur));
+    --bs-btn-hover-border-color: var(--bs-btn-hover-bg);
+    --bs-btn-hover-color: var(--couleur-sur-secondaire-conteneur);
+    --bs-btn-active-bg: var(--bs-btn-hover-bg);
+    --bs-btn-active-border-color: var(--bs-btn-hover-bg);
+    --bs-btn-active-color: var(--couleur-sur-secondaire-conteneur);
+}
+
+.btn-contour {
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: var(--couleur-contour);
+    --bs-btn-color: var(--couleur-texte);
+    --bs-btn-hover-bg: var(--couleur-surface-2);
+    --bs-btn-hover-border-color: var(--couleur-contour);
+    --bs-btn-hover-color: var(--couleur-texte);
+    --bs-btn-active-bg: var(--couleur-surface-3);
+    --bs-btn-active-border-color: var(--couleur-contour);
+    --bs-btn-active-color: var(--couleur-texte);
+}
+
+/* Bouton texte : lien d'action sans fond */
+.btn-texte {
+    --bs-btn-padding-x: 12px;
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: transparent;
+    --bs-btn-color: var(--couleur-primaire);
+    --bs-btn-hover-bg: rgba(var(--couleur-primaire-rgb), 0.08);
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-hover-color: var(--couleur-primaire-survol);
+    --bs-btn-active-bg: rgba(var(--couleur-primaire-rgb), 0.12);
+    --bs-btn-active-border-color: transparent;
+    --bs-btn-active-color: var(--couleur-primaire-survol);
+}
+
 /* Cases à cocher */
 .form-check-input {
     border-color: var(--couleur-contour);
@@ -301,4 +375,567 @@ textarea:focus-visible {
     border-radius: var(--rayon-l);
     background: var(--couleur-primaire-conteneur);
     color: var(--couleur-sur-primaire-conteneur);
+}
+
+.pastille-icone--petite {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--rayon-m);
+}
+
+
+/* ---------- 8. Structure des pages de l'application ---------- */
+
+/* 8.1 Coque, barre latérale, barre du haut */
+.coque {
+    display: flex;
+    min-height: 100vh;
+}
+
+.coque__colonne {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.barre-laterale {
+    flex-shrink: 0;
+    width: 264px;
+    background: var(--couleur-surface-1);
+}
+
+.barre-laterale__interieur {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-s);
+    height: 100vh;
+    padding: 20px 12px var(--espace-m);
+    overflow-y: auto;
+}
+
+.marque {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: var(--espace-xs) var(--espace-s) var(--espace-s);
+    color: var(--couleur-texte);
+    text-decoration: none;
+}
+
+.marque__texte,
+.selecteur-atelier__texte,
+.profil__texte {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.marque__nom {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.selecteur-atelier {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: 56px;
+    padding: 0 12px;
+    border: 1px solid var(--couleur-contour-leger);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-fond);
+    color: var(--couleur-texte);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.selecteur-atelier:hover {
+    background: var(--couleur-surface-2);
+}
+
+.selecteur-atelier__nom {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-xs);
+    margin-top: var(--espace-s);
+}
+
+.navigation__lien {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+    padding: 0 var(--espace-m);
+    border-radius: 28px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--couleur-texte-secondaire);
+    text-decoration: none;
+}
+
+.navigation__lien:hover {
+    background: var(--couleur-surface-2);
+    color: var(--couleur-texte-secondaire);
+}
+
+.navigation__lien[aria-current="page"] {
+    background: var(--couleur-secondaire-conteneur);
+    color: var(--couleur-sur-secondaire-conteneur);
+    font-weight: 700;
+}
+
+.navigation__titre {
+    padding: var(--espace-m) var(--espace-m) var(--espace-xs);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--couleur-primaire);
+}
+
+.profil {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-s);
+    margin-top: auto;
+    padding: var(--espace-s) var(--espace-s) var(--espace-s) 12px;
+    border-radius: var(--rayon-m);
+    background: var(--couleur-surface-2);
+}
+
+.profil__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--couleur-primaire-conteneur);
+    color: var(--couleur-sur-primaire-conteneur);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.profil__nom {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.barre-haute {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--espace-m);
+    min-height: 72px;
+    padding: 12px var(--espace-xl);
+    border-bottom: 1px solid var(--couleur-surface-3);
+}
+
+.recherche {
+    position: relative;
+    display: flex;
+    flex: 1;
+    min-width: 220px;
+    max-width: 480px;
+}
+
+.recherche__icone {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    color: var(--couleur-texte-secondaire);
+    pointer-events: none;
+}
+
+.recherche__saisie {
+    width: 100%;
+    height: 48px;
+    padding: 0 var(--espace-m) 0 var(--espace-xxl);
+    border: none;
+    border-radius: 24px;
+    background: var(--couleur-surface-1);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--couleur-texte);
+}
+
+
+/* 8.2 Contenu : en-tête de page, cartes, tuiles */
+.contenu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-l);
+    padding: var(--espace-l) var(--espace-xl) var(--espace-xxl);
+}
+
+.entete-page {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--espace-m);
+}
+
+.entete-page__titres {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-xs);
+    min-width: 0;
+}
+
+.entete-page__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espace-s);
+}
+
+.carte {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-m);
+    min-width: 0;
+    padding: var(--espace-l);
+    border: 1px solid var(--couleur-contour-leger);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-fond);
+}
+
+.carte__entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.carte__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-s);
+}
+
+/* Carte dont le contenu (un tableau) va jusqu'aux bords */
+.carte--tableau {
+    gap: var(--espace-s);
+    padding-bottom: var(--espace-s);
+}
+
+.carte--tableau .table-responsive {
+    margin: 0 calc(-1 * var(--espace-l));
+}
+
+/* Tuile chiffrée : une valeur et son libellé */
+.tuiles {
+    display: grid;
+    grid-template-columns: repeat(var(--tuiles-colonnes, 3), minmax(0, 1fr));
+    gap: var(--espace-s);
+}
+
+/* Toujours sur deux colonnes, même sur petit écran */
+.tuiles.tuiles--2 {
+    --tuiles-colonnes: 2;
+}
+
+.tuile {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    padding: 12px var(--espace-m);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-surface-2);
+}
+
+.tuile__valeur {
+    font-size: 28px;
+    line-height: 36px;
+}
+
+.tuile__libelle {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: var(--couleur-texte-secondaire);
+}
+
+
+/* 8.3 Bandeau, étiquettes d'état, progression */
+.bandeau {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px var(--espace-m);
+    border-radius: var(--rayon-m);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.bandeau svg {
+    flex-shrink: 0;
+}
+
+.bandeau__texte {
+    flex: 1;
+    min-width: 0;
+}
+
+.bandeau a {
+    color: inherit;
+    font-weight: 700;
+}
+
+.bandeau--avertissement {
+    background: var(--couleur-avertissement-conteneur);
+    color: var(--couleur-sur-avertissement-conteneur);
+}
+
+.etiquette {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 6px;
+    height: 28px;
+    padding: 0 10px;
+    border: 1px solid transparent;
+    border-radius: var(--rayon-s);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.etiquette--grande {
+    height: 32px;
+}
+
+.etiquette--contour {
+    border-color: var(--couleur-contour);
+    color: var(--couleur-texte-secondaire);
+}
+
+.etiquette--a-faire {
+    background: var(--couleur-surface-1);
+    color: var(--couleur-texte-secondaire);
+}
+
+.etiquette--en-cours {
+    background: var(--couleur-avertissement-conteneur);
+    color: var(--couleur-sur-avertissement-conteneur);
+}
+
+.etiquette--prete {
+    background: var(--couleur-info-conteneur);
+    color: var(--couleur-sur-info-conteneur);
+}
+
+/* Barre de progression fine (élément <progress> natif) */
+.progression {
+    display: block;
+    width: 100%;
+    height: 4px;
+    border: none;
+    border-radius: 2px;
+    background: var(--couleur-primaire-conteneur);
+    overflow: hidden;
+    appearance: none;
+}
+
+.progression::-webkit-progress-bar {
+    background: var(--couleur-primaire-conteneur);
+}
+
+.progression::-webkit-progress-value {
+    border-radius: 2px;
+    background: var(--couleur-primaire);
+}
+
+.progression::-moz-progress-bar {
+    border-radius: 2px;
+    background: var(--couleur-primaire);
+}
+
+
+/* 8.4 Tableaux de données */
+.tableau {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.tableau th,
+.tableau td {
+    padding: 0 6px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.tableau th:first-child,
+.tableau td:first-child {
+    padding-left: var(--espace-m);
+}
+
+.tableau th:last-child,
+.tableau td:last-child {
+    padding-right: var(--espace-m);
+}
+
+.tableau thead th {
+    height: 48px;
+    background: var(--couleur-surface-1);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: var(--couleur-texte-secondaire);
+}
+
+.tableau tbody td {
+    height: 64px;
+    padding-top: var(--espace-s);
+    padding-bottom: var(--espace-s);
+    border-bottom: 1px solid var(--couleur-surface-3);
+}
+
+/* Contenu de cellule sur deux lignes : valeur principale + détail */
+.tableau__principal,
+.tableau__detail {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tableau__principal {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.tableau__principal--fort,
+.tableau a.tableau__principal {
+    font-weight: 500;
+}
+
+.tableau a.tableau__principal {
+    text-decoration: none;
+}
+
+.tableau__detail {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--couleur-texte-secondaire);
+}
+
+.tableau .progression {
+    margin-top: 6px;
+}
+
+
+/* 8.5 Responsive */
+@media (max-width: 1100px) {
+    .barre-laterale {
+        width: 80px;
+    }
+
+    .barre-laterale__interieur {
+        align-items: center;
+        padding: var(--espace-m) 12px;
+    }
+
+    .replie-masque {
+        display: none !important;
+    }
+
+    .marque {
+        padding: var(--espace-xs) 0 var(--espace-s);
+    }
+
+    .selecteur-atelier {
+        justify-content: center;
+        width: 56px;
+        padding: 0;
+    }
+
+    .navigation__lien {
+        justify-content: center;
+        width: 56px;
+        padding: 0;
+    }
+
+    .profil {
+        padding: var(--espace-s);
+    }
+}
+
+@media (max-width: 900px) {
+    .tuiles {
+        --tuiles-colonnes: 2;
+    }
+}
+
+@media (max-width: 720px) {
+    .coque {
+        flex-direction: column;
+    }
+
+    .barre-laterale {
+        width: auto;
+    }
+
+    .barre-laterale__interieur,
+    .navigation {
+        flex-direction: row;
+    }
+
+    .barre-laterale__interieur {
+        position: static;
+        height: auto;
+        padding: var(--espace-s);
+        overflow-x: auto;
+    }
+
+    .barre-laterale__interieur > *,
+    .navigation__lien {
+        flex-shrink: 0;
+    }
+
+    .navigation {
+        margin-top: 0;
+    }
+
+    .profil {
+        margin: 0 0 0 auto;
+    }
+
+    .barre-haute {
+        padding: 12px var(--espace-m);
+    }
+
+    .barre-haute__date {
+        display: none;
+    }
+
+    .contenu {
+        padding: var(--espace-m);
+    }
+
+    .tuiles {
+        --tuiles-colonnes: 1;
+    }
 }

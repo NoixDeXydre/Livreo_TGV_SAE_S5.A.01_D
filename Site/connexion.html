@@ -19,8 +19,7 @@
 <body>
     <div class="connexion d-flex min-vh-100">
 
-        <!-- Colonne gauche : formulaire de connexion.
-             Les éléments .revele apparaissent un par un dans le sillage du chariot. -->
+        <!-- Colonne gauche : formulaire de connexion -->
         <main class="connexion__principal d-flex align-items-center justify-content-center py-4 py-md-5">
             <div class="connexion__carte w-100 d-flex flex-column gap-4">
 
@@ -37,7 +36,6 @@
                     <p class="texte-m texte-secondaire revele revele--3">Connectez-vous pour gérer les clients, les commandes et les livraisons.</p>
                 </header>
 
-                <!-- Pas de back : le formulaire ne soumet rien pour l'instant -->
                 <form class="d-flex flex-column gap-4" action="#" method="post">
 
                     <div class="champ revele revele--4">
@@ -70,12 +68,10 @@
             </div>
         </main>
 
-        <!-- Colonne droite : illustration (affichée à partir de 992 px, breakpoint lg de Bootstrap) -->
+        <!-- Colonne droite : illustration -->
         <aside class="connexion__illustration d-none d-lg-flex flex-column align-items-center justify-content-center gap-4 p-5">
 
-            <!-- Chariot animé :
-                 .connexion__chariot        → trajet horizontal + flou de mouvement + ombre au sol
-                 .connexion__chariot-charge → basculement de la charge au freinage -->
+            <!-- Chariot -->
             <div class="connexion__chariot">
                 <div class="connexion__chariot-charge">
                     <picture>
@@ -90,8 +86,7 @@
 
     </div>
 
-    <!-- Flou de mouvement horizontal du chariot : très fort au départ, il s'efface pendant le freinage.
-         Animé en SVG (SMIL), sans JavaScript. Les temps sont calés sur l'animation CSS (départ à 0,2 s). -->
+    <!-- Flou de mouvement -->
     <svg class="connexion__filtres" width="0" height="0" aria-hidden="true" focusable="false">
         <filter id="flou-mouvement" x="-25%" y="0" width="150%" height="100%" color-interpolation-filters="sRGB">
             <feGaussianBlur stdDeviation="0.3 0">

@@ -1,0 +1,137 @@
+/* =========================================================
+   Tableau de bord
+   1. Grille des cartes
+   2. Prochaine tournée : avancement
+   3. Dernière tournée
+   4. Commandes : largeur des colonnes
+   5. Pièces par état : barre empilée et légende
+   6. Organisation
+   7. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Grille des cartes ---------- */
+.grille-principale {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: var(--espace-l);
+}
+
+
+/* ---------- 2. Prochaine tournée : avancement ---------- */
+.avancement {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-s);
+}
+
+.avancement__ligne {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--espace-s);
+}
+
+.avancement__titre {
+    font-weight: 500;
+}
+
+
+/* ---------- 3. Dernière tournée ---------- */
+.derniere-tournee__entete {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.derniere-tournee__icone {
+    color: var(--couleur-succes);
+}
+
+.derniere-tournee__titre {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+
+/* ---------- 4. Commandes : largeur des colonnes ---------- */
+.tableau--commandes th:nth-child(1) { width: 128px; }
+.tableau--commandes th:nth-child(2) { width: 32%; }
+.tableau--commandes th:nth-child(3) { width: 122px; }
+.tableau--commandes th:nth-child(5) { width: 158px; }
+
+
+/* ---------- 5. Pièces par état ---------- */
+.repartition {
+    border: 1px solid var(--couleur-contour-leger);
+    border-radius: var(--rayon-s);
+    overflow: hidden;
+}
+
+.repartition__barre text {
+    font-size: 14px;
+    font-weight: 500;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.repartition__segment--a-faire rect    { fill: var(--couleur-surface-1); }
+.repartition__segment--a-faire text    { fill: var(--couleur-texte-secondaire); }
+.repartition__segment--en-cours rect   { fill: var(--couleur-avertissement-conteneur); }
+.repartition__segment--en-cours text   { fill: var(--couleur-sur-avertissement-conteneur); }
+.repartition__segment--fabriquee rect  { fill: var(--couleur-info); }
+.repartition__segment--fabriquee text  { fill: var(--couleur-sur-info); }
+
+.legende {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-m);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--couleur-texte-secondaire);
+}
+
+.legende__element {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legende__element--en-cours svg  { color: var(--couleur-sur-avertissement-conteneur); }
+.legende__element--fabriquee svg { color: var(--couleur-info); }
+
+
+/* ---------- 6. Organisation ---------- */
+.organisation {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.organisation__element {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    min-height: 52px;
+    border-bottom: 1px solid var(--couleur-surface-3);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.organisation__element b {
+    font-weight: 500;
+}
+
+
+/* ---------- 7. Responsive ---------- */
+@media (max-width: 900px) {
+    .grille-principale {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
