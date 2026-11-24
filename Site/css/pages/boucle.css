@@ -1,0 +1,200 @@
+/* =========================================================
+   Boucle — parcours, étapes, chargement
+   1. Informations de la boucle
+   2. Grille : parcours + chargement / étapes
+   3. Repères (atelier, numéro d'étape)
+   4. Parcours
+   5. Listes : ordre de chargement et étapes
+   6. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Informations de la boucle ---------- */
+.infos-boucle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px var(--espace-xl);
+    margin: 0;
+    padding: var(--espace-m) var(--espace-l);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-surface-1);
+}
+
+.infos-boucle__element {
+    display: flex;
+    flex-direction: column;
+}
+
+.infos-boucle dd {
+    margin: 0;
+}
+
+
+/* ---------- 2. Grille ---------- */
+.grille-boucle {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    align-items: start;
+    gap: var(--espace-l);
+}
+
+.grille-boucle__colonne {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-l);
+    min-width: 0;
+}
+
+
+/* ---------- 3. Repères ---------- */
+.repere {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.repere--petit {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+}
+
+.repere--atelier {
+    border-radius: var(--rayon-s);
+    background: var(--couleur-texte);
+    color: var(--couleur-sur-primaire);
+    font-weight: 700;
+}
+
+.repere--petit.repere--atelier {
+    border-radius: 7px;
+}
+
+.repere--etape,
+.repere--attente {
+    border-radius: 50%;
+}
+
+.repere--etape {
+    background: var(--couleur-info-conteneur);
+    color: var(--couleur-sur-info-conteneur);
+}
+
+.repere--petit.repere--etape {
+    font-weight: 700;
+}
+
+.repere--attente {
+    background: var(--couleur-surface-2);
+    color: var(--couleur-texte-secondaire);
+}
+
+
+/* ---------- 4. Parcours ---------- */
+.parcours {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espace-s) 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.parcours__arret {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 14px 0 10px;
+    border: 1px solid var(--couleur-contour-leger);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-fond);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.parcours__arret--atelier {
+    background: var(--couleur-surface-1);
+}
+
+.parcours__trajet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: var(--couleur-texte-secondaire);
+}
+
+.parcours__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--couleur-surface-3);
+}
+
+
+/* ---------- 5. Listes ---------- */
+.liste-boucle {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.liste-boucle__element {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    min-height: 56px;
+    border-bottom: 1px solid var(--couleur-surface-3);
+}
+
+.liste-boucle__element--etape {
+    min-height: 76px;
+    padding: var(--espace-s) 0;
+}
+
+.liste-boucle__texte {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.liste-boucle__texte .progression {
+    margin-top: var(--espace-xs);
+}
+
+.liste-boucle__valeur {
+    flex-shrink: 0;
+    min-width: 72px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+
+/* ---------- 6. Responsive ---------- */
+@media (max-width: 900px) {
+    .grille-boucle {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .infos-boucle {
+        padding: var(--espace-m);
+        gap: 12px var(--espace-l);
+    }
+}

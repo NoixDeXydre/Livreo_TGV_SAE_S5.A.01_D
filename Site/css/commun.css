@@ -796,6 +796,10 @@ select.champ__saisie {
     --tuiles-colonnes: 4;
 }
 
+.tuiles--5 {
+    --tuiles-colonnes: 5;
+}
+
 .tuile {
     display: flex;
     flex-direction: column;
@@ -849,6 +853,11 @@ select.champ__saisie {
     color: var(--couleur-sur-avertissement-conteneur);
 }
 
+.bandeau--info {
+    background: var(--couleur-info-conteneur);
+    color: var(--couleur-sur-info-conteneur);
+}
+
 .etiquette {
     display: inline-flex;
     align-items: center;
@@ -891,6 +900,11 @@ select.champ__saisie {
 .etiquette--livree {
     background: var(--couleur-succes-conteneur);
     color: var(--couleur-sur-succes-conteneur);
+}
+
+.etiquette--neutre {
+    background: var(--couleur-surface-2);
+    color: var(--couleur-texte-secondaire);
 }
 
 /* Barre de progression fine (élément <progress> natif) */
@@ -1234,7 +1248,8 @@ select.champ__saisie {
         --tuiles-colonnes: 1;
     }
 
-    .tuiles--4 {
+    .tuiles--4,
+    .tuiles--5 {
         --tuiles-colonnes: 2;
     }
 }

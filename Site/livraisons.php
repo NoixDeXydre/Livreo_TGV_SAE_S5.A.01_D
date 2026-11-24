@@ -14,10 +14,10 @@ $aujourdhui = new DateTimeImmutable('2026-10-05');
 $tournees = [
     '2026-10-01' => [
         ['numero' => 'BL-0101', 'client' => 'Serres Maury', 'adresse' => '3 chemin des Serres', 'heure' => '08:48', 'statut' => 'recu',
-         'colis' => [['numero' => 'C-01', 'pieces' => ['P-3101'], 'masse' => 85]],
+         'colis' => [['numero' => 'C-09', 'pieces' => ['P-3101'], 'masse' => 85]],
          'reserves' => []],
         ['numero' => 'BL-0102', 'client' => 'Garage Fabre', 'adresse' => '5 zone artisanale des Prés', 'heure' => '09:21', 'statut' => 'recu',
-         'colis' => [['numero' => 'C-02', 'pieces' => ['P-3102'], 'masse' => 350]],
+         'colis' => [['numero' => 'C-08', 'pieces' => ['P-3102'], 'masse' => 350]],
          'reserves' => []],
         ['numero' => 'BL-0103', 'client' => 'Métallerie Dupuy', 'adresse' => '14 rue des Forges', 'heure' => '10:05', 'statut' => 'recu',
          'colis' => [
@@ -27,15 +27,15 @@ $tournees = [
          'reserves' => ['Coin du colis C-07 enfoncé à la livraison.']],
         ['numero' => 'BL-0104', 'client' => 'Chaudronnerie Bastide', 'adresse' => '27 avenue de l’Industrie', 'heure' => '10:36', 'statut' => 'en_attente',
          'colis' => [
-             ['numero' => 'C-03', 'pieces' => ['P-3103', 'P-3104'], 'masse' => 820],
-             ['numero' => 'C-04', 'pieces' => ['P-3105'], 'masse' => 410],
+             ['numero' => 'C-04', 'pieces' => ['P-3103', 'P-3104'], 'masse' => 640],
+             ['numero' => 'C-05', 'pieces' => ['P-3105'], 'masse' => 590],
          ],
          'reserves' => []],
         ['numero' => 'BL-0105', 'client' => 'Scierie Combes', 'adresse' => '8 route du Moulin', 'heure' => '10:57', 'statut' => 'recu',
          'colis' => [
-             ['numero' => 'C-08', 'pieces' => ['P-3112', 'P-3113', 'P-3114'], 'masse' => 760],
-             ['numero' => 'C-09', 'pieces' => ['P-3115', 'P-3116', 'P-3117'], 'masse' => 760],
-             ['numero' => 'C-10', 'pieces' => ['P-3118', 'P-3119', 'P-3120'], 'masse' => 760],
+             ['numero' => 'C-01', 'pieces' => ['P-3112', 'P-3113', 'P-3114'], 'masse' => 820],
+             ['numero' => 'C-02', 'pieces' => ['P-3115', 'P-3116', 'P-3117'], 'masse' => 760],
+             ['numero' => 'C-03', 'pieces' => ['P-3118', 'P-3119', 'P-3120'], 'masse' => 700],
          ],
          'reserves' => []],
     ],

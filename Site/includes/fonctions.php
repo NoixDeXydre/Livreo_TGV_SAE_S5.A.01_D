@@ -99,6 +99,7 @@ function icone(string $nom, int $taille = 24, float $trait = 2): string
         'atelier'        => '<path d="M3 21V9l9-5 9 5v12"/><path d="M3 21h18"/><path d="M9 21v-7h6v7"/>',
         'chevron-bas'    => '<path d="M6 9l6 6 6-6"/>',
         'chevron-droite' => '<path d="M9 6l6 6-6 6"/>',
+        'fleche-droite'  => '<path d="M5 12h14M13 6l6 6-6 6"/>',
         'retour'         => '<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>',
         'adresse'        => '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
         'tableau-de-bord'=> '<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
