@@ -1,0 +1,104 @@
+/* =========================================================
+   Livraisons — bons de livraison d'une tournée
+   1. Choix de la tournée
+   2. Grille : bons + bon sélectionné
+   3. Tableau des bons
+   4. Bon sélectionné
+   5. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Choix de la tournée ---------- */
+.choix-tournee .champ {
+    min-width: 260px;
+}
+
+
+/* ---------- 2. Grille ---------- */
+.grille-livraisons {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: start;
+    gap: var(--espace-l);
+}
+
+
+/* ---------- 3. Tableau des bons ---------- */
+.tableau--livraisons {
+    min-width: 640px;
+}
+
+.tableau--livraisons th:nth-child(1) { width: 92px; }
+.tableau--livraisons th:nth-child(3) { width: 72px; }
+.tableau--livraisons th:nth-child(4) { width: 80px; }
+.tableau--livraisons th:nth-child(5) { width: 72px; }
+.tableau--livraisons th:nth-child(6) { width: 164px; }
+
+.tableau--livraisons tr.est-selectionne td {
+    background: var(--couleur-primaire-legere);
+}
+
+.tableau__detail--avertissement {
+    color: var(--couleur-sur-avertissement-conteneur);
+}
+
+
+/* ---------- 4. Bon sélectionné ---------- */
+.bon {
+    gap: 20px;
+}
+
+.bon__entete,
+.bon__reserves {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.bon__reserves {
+    gap: var(--espace-xs);
+}
+
+.surtitre {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: var(--couleur-primaire);
+}
+
+.liste-colis {
+    margin: var(--espace-s) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.colis {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    min-height: 56px;
+    border-bottom: 1px solid var(--couleur-surface-3);
+}
+
+.colis__texte {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+
+/* ---------- 5. Responsive ---------- */
+@media (max-width: 900px) {
+    .grille-livraisons {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .choix-tournee,
+    .choix-tournee .champ {
+        width: 100%;
+        min-width: 0;
+    }
+}

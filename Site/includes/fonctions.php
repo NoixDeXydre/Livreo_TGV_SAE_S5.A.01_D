@@ -69,6 +69,14 @@ function date_courte(DateTimeInterface $date, bool $avecJour = true): string
          . $mois[(int) $date->format('n') - 1];
 }
 
+// « 08:48 » → « 8 h 48 »
+function heure(string $hhmm): string
+{
+    [$h, $m] = explode(':', $hhmm);
+
+    return (int) $h . ' h ' . $m;
+}
+
 
 /* ---------- 3. Icônes ---------- */
 // Icônes au trait (24 × 24) : elles prennent la couleur du texte qui les entoure
@@ -86,7 +94,8 @@ function icone(string $nom, int $taille = 24, float $trait = 2): string
         'fabrication'    => '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
         'clients'        => '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
         'livraisons'     => '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/>',
-        'boucles'        => '<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
+        'colis'          => '<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/>',
+        'boucles'        =>'<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
         'personne'       => '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
         'deconnexion'    => '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/>',
         'recherche'      => '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',

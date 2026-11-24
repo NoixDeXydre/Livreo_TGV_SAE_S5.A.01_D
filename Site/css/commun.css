@@ -792,6 +792,10 @@ select.champ__saisie {
     --tuiles-colonnes: 2;
 }
 
+.tuiles--4 {
+    --tuiles-colonnes: 4;
+}
+
 .tuile {
     display: flex;
     flex-direction: column;
@@ -1228,5 +1232,9 @@ select.champ__saisie {
 
     .tuiles {
         --tuiles-colonnes: 1;
+    }
+
+    .tuiles--4 {
+        --tuiles-colonnes: 2;
     }
 }
