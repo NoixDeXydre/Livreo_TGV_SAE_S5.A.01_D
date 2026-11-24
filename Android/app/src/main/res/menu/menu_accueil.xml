@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_synchroniser"
+        android:icon="@drawable/ic_synchroniser"
+        android:title="@string/menu_synchroniser"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_parametres"
+        android:title="@string/menu_parametres"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_deconnecter"
+        android:title="@string/menu_deconnecter"
+        app:showAsAction="never" />
+</menu>

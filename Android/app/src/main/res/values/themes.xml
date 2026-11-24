@@ -1,9 +1,39 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+
+    <style name="Theme.Livreo" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/brique</item>
+        <item name="colorOnPrimary">@color/blanc</item>
+        <item name="colorPrimaryContainer">@color/brique_clair</item>
+        <item name="colorOnPrimaryContainer">@color/brun_profond</item>
+        <!-- Utilisées par les boutons "tonals" (fond brique clair) -->
+        <item name="colorSecondaryContainer">@color/brique_clair</item>
+        <item name="colorOnSecondaryContainer">@color/brun_profond</item>
+
+        <item name="android:colorBackground">@color/fond</item>
+        <item name="colorOnBackground">@color/texte</item>
+        <item name="colorSurface">@color/blanc</item>
+        <item name="colorOnSurface">@color/texte</item>
+        <item name="colorOnSurfaceVariant">@color/texte_secondaire</item>
+        <item name="colorOutline">@color/contour</item>
+
+        <!-- Style par défaut de tous les <Button> -->
+        <item name="materialButtonStyle">@style/Bouton.Livreo</item>
     </style>
 
-    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+    <!-- Bouton plein brique, 48dp de haut comme sur les maquettes -->
+    <style name="Bouton.Livreo" parent="Widget.Material3.Button">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- Bouton secondaire : fond brique clair, texte brun -->
+    <style name="Bouton.Livreo.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>

@@ -1,3 +1,34 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">T.G.V Livraison</string>
+
+    <!-- Connexion -->
+    <string name="connexion_titre">Connexion chauffeur</string>
+    <string name="connexion_identifiant">Identifiant</string>
+    <string name="connexion_identifiant_hint">ex. chauffeur01</string>
+    <string name="connexion_mdp">Mot de passe</string>
+    <string name="connexion_rester">Rester connecté</string>
+    <string name="connexion_bouton">Se connecter</string>
+    <string name="connexion_info">Sans réseau, la connexion reste possible avec les identifiants déjà utilisés sur cette tablette.</string>
+    <string name="statut_serveur_joignable">Serveur joignable</string>
+    <string name="statut_hors_ligne">Hors ligne</string>
+
+    <!-- Accueil -->
+    <string name="menu_synchroniser">Synchroniser</string>
+    <string name="menu_parametres">Paramètres</string>
+    <string name="menu_deconnecter">Se déconnecter</string>
+    <string name="accueil_colis">colis</string>
+    <string name="accueil_clients">clients</string>
+    <string name="accueil_kg">kg</string>
+    <string name="accueil_etat">État de la tournée</string>
+    <string name="bouton_voir_colis">Voir les colis à livrer</string>
+    <string name="bouton_voir_clients">Voir les points de livraison</string>
+    <string name="bouton_planifier">Planifier la tournée</string>
+    <string name="bouton_demarrer">Démarrer la tournée</string>
+    <string name="aide_demarrer">Disponible une fois la tournée planifiée.</string>
+    <string name="aide_hors_ligne">Hors ligne, seule la planification manuelle est possible.</string>
+    <string name="statut_en_ligne">En ligne · synchronisée à %1$s</string>
+    <string name="statut_accueil_hors_ligne">Hors ligne · données enregistrées sur la tablette</string>
+    <string name="bandeau_hors_ligne">&lt;b&gt;Hors ligne.&lt;/b&gt; Vous travaillez sur les données enregistrées sur la tablette le %1$s.</string>
+    <string name="ecran_a_venir">Écran pas encore développé.</string>
+    <string name="synchro_a_venir">Synchronisation pas encore branchée au serveur.</string>
 </resources>
