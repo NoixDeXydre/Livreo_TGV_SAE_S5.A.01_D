@@ -77,6 +77,18 @@ function heure(string $hhmm): string
     return (int) $h . ' h ' . $m;
 }
 
+// 172 minutes → « 2 h 52 »
+function duree(int $minutes): string
+{
+    return intdiv($minutes, 60) . ' h ' . sprintf('%02d', $minutes % 60);
+}
+
+// Un chiffre après la virgule, sans « ,0 » : 86.4 → « 86,4 », 78.0 → « 78 »
+function decimal(float $n): string
+{
+    return round($n, 1) == round($n) ? nombre($n) : number_format($n, 1, ',', "\u{202F}");
+}
+
 
 /* ---------- 3. Icônes ---------- */
 // Icônes au trait (24 × 24) : elles prennent la couleur du texte qui les entoure

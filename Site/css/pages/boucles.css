@@ -1,0 +1,117 @@
+/* =========================================================
+   Boucles de livraison — liste et kilomètres
+   1. Grille : graphique + bilan
+   2. Graphique des kilomètres
+   3. Filtres
+   4. Tableau des boucles
+   5. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Grille ---------- */
+.grille-boucles {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: var(--espace-l);
+}
+
+
+/* ---------- 2. Graphique des kilomètres ---------- */
+.graphique {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.graphique__axe {
+    stroke: var(--couleur-contour-leger);
+    stroke-width: 1;
+}
+
+.graphique__moyenne {
+    stroke: var(--couleur-contour);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 6;
+}
+
+.graphique__barre {
+    fill: var(--couleur-contour);
+}
+
+.graphique__barre--recente {
+    fill: var(--couleur-primaire);
+}
+
+.graphique__legende,
+.graphique__date {
+    font-size: 12px;
+    fill: var(--couleur-texte-secondaire);
+}
+
+.graphique__legende {
+    font-weight: 500;
+}
+
+/* Liseré couleur du fond : la valeur reste lisible quand la ligne de moyenne la traverse */
+.graphique__valeur {
+    font-size: 14px;
+    font-weight: 500;
+    fill: var(--couleur-texte);
+    stroke: var(--couleur-fond);
+    stroke-width: 4px;
+    stroke-linejoin: round;
+    paint-order: stroke;
+}
+
+
+/* ---------- 3. Filtres ---------- */
+/* Le haut est dégagé pour les libellés posés sur la bordure */
+.filtres-boucles {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--espace-m);
+    padding-top: var(--espace-s);
+}
+
+
+/* ---------- 4. Tableau des boucles ---------- */
+.tableau--boucles {
+    min-width: 1100px;
+}
+
+.tableau--boucles th:nth-child(1) { width: 120px; }
+.tableau--boucles th:nth-child(2) { width: 132px; }
+.tableau--boucles th:nth-child(3) { width: 164px; }
+.tableau--boucles th:nth-child(4) { width: 140px; }
+.tableau--boucles th:nth-child(5) { width: 168px; }
+.tableau--boucles th:nth-child(7) { width: 88px; }
+.tableau--boucles th:nth-child(8) { width: 80px; }
+.tableau--boucles th:nth-child(9) { width: 64px; }
+
+
+/* ---------- 5. Responsive ---------- */
+@media (max-width: 900px) {
+    .grille-boucles {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .filtres-boucles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .filtres-boucles {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Le graphique est réduit de moitié environ : textes agrandis dans le repère SVG */
+    .graphique__legende,
+    .graphique__date {
+        font-size: 20px;
+    }
+
+    .graphique__valeur {
+        font-size: 22px;
+    }
+}
