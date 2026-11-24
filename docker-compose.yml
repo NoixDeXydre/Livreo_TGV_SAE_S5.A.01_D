@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  
+  mongodb:
+    image: mongo:7.0
+    container_name: livreoDB
+    restart: always
+
+    ports:
+      - "27017:27017"
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: marcenac-citron
+      MONGO_INITDB_DATABASE: Livreo-db
+
+    volumes:
+      - mongodb_data:/data/db 
+      - ./init:/docker-entrypoint-initdb.d:ro
+      
+  java-server:
+    build:
+      context: ./api-spring
+      dockerfile: Dockerfile
+    container_name: livreoAPI
+    restart: always
+    ports:
+      - "80:8080"
+    depends_on:
+      - mongodb
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://admin:marcenac-citron@mongodb:27017/Livreo-db?authSource=admin
+
+volumes:
+  mongodb_data:
