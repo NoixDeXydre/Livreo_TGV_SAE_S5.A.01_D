@@ -1,0 +1,65 @@
+/* =========================================================
+   Client — ajout / modification
+   1. Grille : formulaire + aperçu
+   2. Champs
+   3. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Grille ---------- */
+.grille-client {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--espace-l);
+}
+
+.grille-client__formulaire {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-l);
+    min-width: 0;
+}
+
+
+/* ---------- 2. Champs ---------- */
+.champs-identite,
+.champs-adresse {
+    padding-top: var(--espace-xs);
+}
+
+.champs-identite {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espace-l) var(--espace-m);
+}
+
+.champs-adresse {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-l);
+}
+
+.champs-adresse__ville {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: var(--espace-m);
+}
+
+
+/* ---------- 3. Responsive ---------- */
+@media (max-width: 900px) {
+    .grille-client {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .champs-identite {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .champs-adresse__ville {
+        grid-template-columns: 120px minmax(0, 1fr);
+    }
+}

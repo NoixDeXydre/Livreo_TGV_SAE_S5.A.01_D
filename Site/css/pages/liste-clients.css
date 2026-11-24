@@ -24,7 +24,6 @@
     gap: var(--espace-s);
 }
 
-/* Le client sélectionné a une bordure de 2 px : la marge interne compense */
 .liste-clients__element {
     display: flex;
     align-items: center;
@@ -92,27 +91,6 @@
     display: grid;
     grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
     gap: var(--espace-l);
-}
-
-.bloc-adresse {
-    display: flex;
-    align-items: center;
-    gap: var(--espace-m);
-    padding: var(--espace-m);
-    border-radius: var(--rayon-m);
-    background: var(--couleur-surface-1);
-}
-
-.bloc-adresse__icone {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    background: var(--couleur-primaire-conteneur);
-    color: var(--couleur-sur-primaire-conteneur);
 }
 
 .contact {

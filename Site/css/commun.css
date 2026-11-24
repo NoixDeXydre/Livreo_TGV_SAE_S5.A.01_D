@@ -68,7 +68,7 @@
     --couleur-contour: #85736B;
     --couleur-contour-leger: #D8C2B9;
 
-    /* Couleurs secondaires (boutons tonals, lien actif) */
+    /* Couleurs secondaires */
     --couleur-secondaire-conteneur: #F7DED3;
     --couleur-sur-secondaire-conteneur: #2C160D;
 
@@ -289,6 +289,15 @@ textarea:focus-visible {
     --bs-btn-active-color: var(--couleur-primaire-survol);
 }
 
+/* Bouton désactivé : même aspect neutre quelle que soit sa variante */
+.btn:disabled,
+.btn.disabled {
+    --bs-btn-disabled-bg: var(--couleur-surface-3);
+    --bs-btn-disabled-border-color: var(--couleur-surface-3);
+    --bs-btn-disabled-color: var(--couleur-texte-secondaire);
+    --bs-btn-disabled-opacity: 1;
+}
+
 /* Cases à cocher */
 .form-check-input {
     border-color: var(--couleur-contour);
@@ -445,6 +454,28 @@ select.champ__saisie {
     width: 40px;
     height: 40px;
     border-radius: var(--rayon-m);
+}
+
+/* Adresse de livraison d'un client, précédée d'une icône */
+.bloc-adresse {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-m);
+    padding: var(--espace-m);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-surface-1);
+}
+
+.bloc-adresse__icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--couleur-primaire-conteneur);
+    color: var(--couleur-sur-primaire-conteneur);
 }
 
 
@@ -711,6 +742,22 @@ select.champ__saisie {
     display: flex;
     flex-wrap: wrap;
     gap: var(--espace-s);
+}
+
+/* Carte de suppression en bas d'un formulaire : explication + bouton */
+.zone-suppression {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--espace-m);
+}
+
+.zone-suppression__texte {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-width: 560px;
 }
 
 /* Carte sur fond teinté, sans bordure (récapitulatif) */

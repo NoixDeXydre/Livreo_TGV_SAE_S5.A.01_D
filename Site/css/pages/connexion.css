@@ -1,27 +1,26 @@
 /* =========================================================
    1. Mise en page
    2. Animation d'arrivée
-      2.1 Réglages (durées, courbes)
-      2.2 Chariot : trajet, flou de mouvement, ombre, freinage
-      2.3 Formulaire : apparition dans le sillage du chariot
+      2.1 Réglages
+      2.2 Formulaire
+      2.3 Chariot
       2.4 Images clés
    3. Responsive
    ========================================================= */
 
 
 /* ---------- 1. Mise en page ---------- */
-/* Pas de barre de défilement horizontale pendant l'animation */
+/* Évite une barre de défilement horizontale pendant l'animation */
 .connexion {
     overflow-x: clip;
 }
 
-/* Deux colonnes de largeur égale */
 .connexion__principal,
 .connexion__illustration {
     flex: 1;
 }
 
-/* Colonne gauche : formulaire */
+/* Colonne gauche */
 .connexion__principal {
     min-width: 0;
     padding-inline: var(--espace-xl);
@@ -31,7 +30,7 @@
     max-width: 400px;
 }
 
-/* Colonne droite : illustration */
+/* Colonne droite */
 .connexion__illustration {
     max-width: 720px;
     background: var(--couleur-surface-1);
@@ -43,7 +42,7 @@
     max-width: 560px;
 }
 
-/* Ombre portée au sol, sous les roues */
+/* Ombre au sol */
 .connexion__chariot::before {
     content: "";
     position: absolute;
@@ -63,7 +62,6 @@
     max-width: 380px;
 }
 
-/* Conteneur du filtre SVG : ne prend aucune place */
 .connexion__filtres {
     position: absolute;
     width: 0;
@@ -72,23 +70,23 @@
 }
 
 
-/* ---------- 2. Animation d'arrivée ----------                       */
+/* ---------- 2. Animation d'arrivée ---------- */
 
 @media (prefers-reduced-motion: no-preference) {
 
     /* 2.1 Réglages */
     :root {
-        --anim-depart: 0.2s;                                /* laisse la page s'afficher */
+        --anim-depart: 0.2s;
         --anim-trajet: 1.3s;
-        --courbe-freinage: cubic-bezier(0.16, 1, 0.3, 1);   /* forte décélération */
+        --courbe-freinage: cubic-bezier(0.16, 1, 0.3, 1);
         --courbe-sortie: cubic-bezier(0.22, 1, 0.36, 1);
-        --revele-depart: 0.1s;                              /* sans chariot (< 992 px) */
-        --revele-pas: 0.06s;                                /* écart entre deux éléments */
+        --revele-depart: 0.1s;
+        --revele-pas: 0.06s;
     }
 
-    /* 2.3 Formulaire : chaque élément glisse depuis la gauche */
+    /* 2.2 Formulaire */
     .revele {
-        /* backwards : caché pendant l'attente, puis plus aucun style d'animation une fois fini */
+        /* backwards (et keyframes sans « to ») : aucun style résiduel sur le texte une fois fini */
         animation: revele 0.7s var(--courbe-sortie) backwards;
         animation-delay: calc(var(--revele-depart) + var(--i, 0) * var(--revele-pas));
     }
@@ -106,11 +104,10 @@
 @media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
 
     :root {
-        /* le formulaire attend que le chariot passe devant lui */
         --revele-depart: 0.4s;
     }
 
-    /* 2.2 Chariot : trajet + flou de mouvement (filtre SVG retiré à l'arrêt) */
+    /* 2.3 Chariot */
     .connexion__chariot {
         will-change: transform;
         animation:
@@ -118,18 +115,15 @@
             chariot-flou 0.65s step-end var(--anim-depart) both;
     }
 
-    /* Ombre : étirée et plus claire à grande vitesse */
     .connexion__chariot::before {
         animation: chariot-ombre var(--anim-trajet) var(--courbe-freinage) var(--anim-depart) both;
     }
 
-    /* Freinage : la charge bascule autour de la roue avant puis s'amortit */
     .connexion__chariot-charge {
-        transform-origin: 78% 92%;
+        transform-origin: 78% 92%; /* roue avant */
         animation: chariot-freinage 1.25s linear calc(var(--anim-depart) + 0.15s) both;
     }
 
-    /* Légende : une fois le chariot immobile */
     .connexion__legende {
         animation: revele-legende 0.6s var(--courbe-sortie) 1.25s backwards;
     }
@@ -158,7 +152,6 @@
     }
 }
 
-/* Oscillation amortie : chaque rebond est plus faible que le précédent */
 @keyframes chariot-freinage {
     0%   { transform: rotate(0);         animation-timing-function: cubic-bezier(0.3, 0, 0.4, 1); }
     20%  { transform: rotate(2.2deg);    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
@@ -168,7 +161,6 @@
     100% { transform: none; }
 }
 
-/* Pas de « to » : l'élément termine sur ses styles normaux */
 @keyframes revele {
     from {
         opacity: 0;

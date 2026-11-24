@@ -3,9 +3,8 @@
    1. Grille : formulaire + récapitulatif
    2. Informations
    3. Lignes de pièces
-   4. Zone de suppression
-   5. Récapitulatif
-   6. Responsive
+   4. Récapitulatif
+   5. Responsive
    ========================================================= */
 
 
@@ -90,17 +89,7 @@
 }
 
 
-/* ---------- 4. Zone de suppression ---------- */
-.zone-suppression {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--espace-m);
-}
-
-
-/* ---------- 5. Récapitulatif ---------- */
+/* ---------- 4. Récapitulatif ---------- */
 .recapitulatif {
     position: sticky;
     top: var(--espace-l);
@@ -118,7 +107,7 @@
 }
 
 
-/* ---------- 6. Responsive ---------- */
+/* ---------- 5. Responsive ---------- */
 @media (max-width: 900px) {
     .grille-commande {
         grid-template-columns: minmax(0, 1fr);
