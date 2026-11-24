@@ -113,6 +113,7 @@ function icone(string $nom, int $taille = 24, float $trait = 2): string
         'deconnexion'    => '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/>',
         'recherche'      => '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
         'plus'           => '<path d="M12 5v14M5 12h14"/>',
+        'info'           => '<circle cx="12" cy="12" r="10"/><path d="M12 11v5M12 8h.01"/>',
         'alerte'         => '<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/>',
         'horloge'        => '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
         'coche'          => '<path d="M5 12.5l4.5 4.5L19 7"/>',

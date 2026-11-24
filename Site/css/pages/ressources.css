@@ -1,0 +1,60 @@
+/* =========================================================
+   Ressources — ateliers, camions, équipe
+   1. Liste de ressources
+   2. Carte d'une ressource
+   3. Responsive
+   ========================================================= */
+
+
+/* ---------- 1. Liste de ressources ---------- */
+.ressources {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-m);
+}
+
+.ressources__entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+/* ---------- 2. Carte d'une ressource ---------- */
+.ressource {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--espace-m);
+    padding: 20px var(--espace-l);
+    border: 1px solid var(--couleur-contour-leger);
+    border-radius: var(--rayon-m);
+    background: var(--couleur-fond);
+}
+
+.ressource__texte {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+/* L'étiquette peut passer sur deux lignes sur petit écran */
+.ressource__etiquette {
+    height: auto;
+    min-height: 28px;
+    margin-top: var(--espace-xs);
+    padding-top: var(--espace-xs);
+    padding-bottom: var(--espace-xs);
+    white-space: normal;
+}
+
+
+/* ---------- 3. Responsive ---------- */
+@media (max-width: 720px) {
+    .ressource {
+        padding: var(--espace-m);
+    }
+}

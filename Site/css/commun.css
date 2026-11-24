@@ -14,7 +14,7 @@
       8.2 Contenu : en-tête de page, cartes, tuiles
       8.3 Bandeau, étiquettes d'état, progression
       8.4 Tableaux de données
-      8.5 Filtres de liste
+      8.5 Filtres de liste, onglets
       8.6 Responsive (repères des maquettes : 1100, 900 et 720 px)
    ========================================================= */
 
@@ -454,6 +454,12 @@ select.champ__saisie {
     width: 40px;
     height: 40px;
     border-radius: var(--rayon-m);
+}
+
+.pastille-icone--moyenne {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
 }
 
 /* Adresse de livraison d'un client, précédée d'une icône */
@@ -907,6 +913,11 @@ select.champ__saisie {
     color: var(--couleur-texte-secondaire);
 }
 
+.etiquette--accent {
+    background: var(--couleur-secondaire-conteneur);
+    color: var(--couleur-sur-secondaire-conteneur);
+}
+
 /* Barre de progression fine (élément <progress> natif) */
 .progression {
     display: block;
@@ -1126,6 +1137,33 @@ select.champ__saisie {
     pointer-events: none;
 }
 
+/* Onglets : un lien par onglet, l'onglet courant porte aria-current */
+.onglets {
+    display: flex;
+    border-bottom: 1px solid var(--couleur-contour-leger);
+}
+
+.onglet {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 var(--espace-l);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--couleur-texte-secondaire);
+    text-decoration: none;
+}
+
+.onglet:hover {
+    background: var(--couleur-surface-1);
+    color: var(--couleur-texte);
+}
+
+.onglet[aria-current="page"] {
+    box-shadow: inset 0 -3px 0 var(--couleur-primaire);
+    color: var(--couleur-primaire);
+}
+
 
 /* 8.6 Responsive */
 @media (max-width: 1100px) {
@@ -1251,5 +1289,11 @@ select.champ__saisie {
     .tuiles--4,
     .tuiles--5 {
         --tuiles-colonnes: 2;
+    }
+
+    .onglet {
+        flex: 1;
+        justify-content: center;
+        padding: 0 var(--espace-s);
     }
 }
