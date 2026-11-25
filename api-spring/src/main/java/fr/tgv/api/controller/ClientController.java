@@ -52,12 +52,26 @@ public class ClientController {
     }
 
     @PatchMapping("/updateClient/{id}")
-    public Client updateClient(@PathVariable String id, @RequestBody Client client) {
-        return clientService.updateClient(id, client);
+    public ResponseEntity<Client> updateClient(@PathVariable String id, @RequestBody Client client) {
+        try {
+            Client clientModifie = clientService.updateClient(id, client);
+
+            if (client == null) {
+                return ResponseEntity.notFound().build();
+            }
+
+            return ResponseEntity.ok(clientModifie);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @DeleteMapping("/deleteClient/{id}")
     public void deleteClient(@PathVariable String id) {
-        clientService.deleteClient(id);
+        if(clientService.deleteClient(id)) {
+            ResponseEntity.noContent();
+        } else {
+            ResponseEntity.notFound();
+        }
     }
 }
