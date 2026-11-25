@@ -113,11 +113,11 @@ public class ClientController {
      *              - 404 si le client n'as pas été trouvé
      */
     @DeleteMapping("/deleteClient/{id}")
-    public ResponseEntity.HeadersBuilder deleteClient(@PathVariable String id) {
+    public ResponseEntity<Client> deleteClient(@PathVariable String id) {
         if(clientService.deleteClient(id)) {
-            return ResponseEntity.noContent();
+            return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound();
+            return ResponseEntity.notFound().build();
         }
     }
 }
