@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Trait de 1dp entre les lignes du tableau des pièces (TableLayout showDividers) -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/separateur" />
+    <size android:height="1dp" />
+</shape>

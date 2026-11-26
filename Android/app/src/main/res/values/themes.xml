@@ -36,4 +36,9 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <!-- Texte des boutons d'onglet, en majuscules comme sur les maquettes -->
+    <style name="Onglet.Livreo" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>

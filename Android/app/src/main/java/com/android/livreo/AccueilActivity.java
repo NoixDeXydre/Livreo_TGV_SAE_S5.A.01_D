@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -26,7 +25,6 @@ public class AccueilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_accueil);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,8 +33,10 @@ public class AccueilActivity extends AppCompatActivity {
         afficherTournee();
         afficherEtatConnexion();
 
-        findViewById(R.id.boutonVoirColis).setOnClickListener(v -> ecranAVenir());
-        findViewById(R.id.boutonVoirClients).setOnClickListener(v -> ecranAVenir());
+        findViewById(R.id.boutonVoirColis).setOnClickListener(
+                v -> ouvrirColis(ColisActivity.ONGLET_COLIS));
+        findViewById(R.id.boutonVoirClients).setOnClickListener(
+                v -> ouvrirColis(ColisActivity.ONGLET_CLIENTS));
         findViewById(R.id.boutonPlanifier).setOnClickListener(v -> ecranAVenir());
         findViewById(R.id.boutonDemarrer).setOnClickListener(v -> ecranAVenir());
     }
@@ -104,6 +104,13 @@ public class AccueilActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /** Ouvre l'écran des colis sur l'onglet demandé (Colis ou Clients). */
+    private void ouvrirColis(int onglet) {
+        Intent intention = new Intent(this, ColisActivity.class);
+        intention.putExtra(ColisActivity.EXTRA_ONGLET, onglet);
+        startActivity(intention);
     }
 
     private void ecranAVenir() {

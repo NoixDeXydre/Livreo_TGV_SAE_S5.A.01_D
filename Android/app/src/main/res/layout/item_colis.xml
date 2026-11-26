@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Une carte de la liste des colis : code, client + nombre de pièces, poids -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    app:cardBackgroundColor="@color/blanc"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="62dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            android:id="@+id/texteCode"
+            android:layout_width="44dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/texte"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="C-01" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/texteClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/texte"
+                android:textSize="15sp"
+                tools:text="Scierie Combes" />
+
+            <TextView
+                android:id="@+id/textePieces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/texte_secondaire"
+                android:textSize="13sp"
+                tools:text="4 pièces" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textePoids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/texte"
+            android:textSize="15sp"
+            tools:text="820 kg" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

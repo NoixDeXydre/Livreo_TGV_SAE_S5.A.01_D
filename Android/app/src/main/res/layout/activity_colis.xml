@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Écran 03-04 : Toolbar + onglets Colis / Clients (TabLayout + ViewPager2) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fond"
+    android:orientation="vertical"
+    tools:context=".ColisActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/brique"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.Material3.Light" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/onglets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/brique"
+        android:elevation="4dp"
+        app:tabIndicatorColor="@color/blanc"
+        app:tabSelectedTextColor="@color/blanc"
+        app:tabTextAppearance="@style/Onglet.Livreo"
+        app:tabTextColor="@color/blanc_75" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pagination"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

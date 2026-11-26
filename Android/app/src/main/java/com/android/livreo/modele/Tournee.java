@@ -50,6 +50,28 @@ public class Tournee {
         return colis.size();
     }
 
+    /** Nombre de colis à livrer chez ce client. */
+    public int getNbColisPour(Client client) {
+        int nb = 0;
+        for (Colis c : colis) {
+            if (c.getClient() == client) {
+                nb++;
+            }
+        }
+        return nb;
+    }
+
+    /** Poids total des colis à livrer chez ce client. */
+    public int getPoidsKgPour(Client client) {
+        int total = 0;
+        for (Colis c : colis) {
+            if (c.getClient() == client) {
+                total += c.getPoidsKg();
+            }
+        }
+        return total;
+    }
+
     public int getNbClients() {
         return clients.size();
     }

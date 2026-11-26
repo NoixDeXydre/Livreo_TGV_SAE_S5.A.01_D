@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">T.G.V Livraison</string>
 
     <!-- Connexion -->
@@ -31,4 +31,55 @@
     <string name="bandeau_hors_ligne">&lt;b&gt;Hors ligne.&lt;/b&gt; Vous travaillez sur les données enregistrées sur la tablette le %1$s.</string>
     <string name="ecran_a_venir">Écran pas encore développé.</string>
     <string name="synchro_a_venir">Synchronisation pas encore branchée au serveur.</string>
+
+    <!-- Colis à livrer (onglets Colis et Clients) -->
+    <string name="titre_colis">Colis à livrer</string>
+    <string name="onglet_colis">Colis (%1$d)</string>
+    <string name="onglet_clients">Clients (%1$d)</string>
+    <string name="poids_kg">%1$s kg</string>
+    <string name="colis_intro">Triés par poids décroissant, soit l’ordre de chargement.</string>
+    <plurals name="nb_pieces">
+        <item quantity="one">%1$d pièce</item>
+        <item quantity="other">%1$d pièces</item>
+    </plurals>
+    <string name="clients_intro">Le bouton carte ouvre l’adresse dans l’application de cartes du téléphone.</string>
+    <!-- "colis" est invariable : pas besoin de plurals -->
+    <string name="resume_client" tools:ignore="PluralsCandidate">%1$d colis · %2$s kg</string>
+    <string name="voir_sur_carte">Voir %1$s sur la carte</string>
+    <string name="aucune_appli_carte">Aucune application de cartes sur ce téléphone.</string>
+    <string name="points_depart_titre">Points de départ</string>
+    <!-- Bouchon : points de départ en dur tant que la synchro n'existe pas -->
+    <string name="atelier_principal">Atelier principal</string>
+    <string name="atelier_principal_adresse">Zone artisanale, 12 rue de l’Usine</string>
+    <string name="atelier_2">Atelier n° 2</string>
+    <string name="atelier_2_adresse">5 impasse des Tourneurs</string>
+
+    <!-- Détail d'un colis-->
+    <string name="detail_poids_total">Poids total</string>
+    <string name="detail_position">Position au chargement</string>
+    <string name="detail_commande">Commande</string>
+    <string name="detail_client">Client</string>
+    <string name="detail_voir_carte">Voir sur la carte</string>
+    <string name="detail_pieces">Pièces emballées</string>
+    <string name="detail_col_numero">N°</string>
+    <string name="detail_col_designation">Désignation</string>
+    <string name="detail_col_poids">Poids</string>
+
+    <!-- Bouchon affiché pour tous les colis -->
+    <string name="titre_detail_colis">Colis C-06</string>
+    <string name="bouchon_detail_poids">510 kg</string>
+    <string name="bouchon_detail_position">6ᵉ sur 9 en partant du bas</string>
+    <string name="bouchon_detail_commande">CMD-114</string>
+    <string name="bouchon_detail_client">Métallerie Dupuy</string>
+    <string name="bouchon_detail_adresse">14 rue des Forges</string>
+    <string name="bouchon_detail_contact">Contact : M. Dupuy · 05 65 00 00 00</string>
+    <string name="bouchon_piece1_numero">P-3107</string>
+    <string name="bouchon_piece1_designation">Garde-corps 3 m</string>
+    <string name="bouchon_piece1_poids">180 kg</string>
+    <string name="bouchon_piece2_numero">P-3108</string>
+    <string name="bouchon_piece2_designation">Garde-corps 3 m</string>
+    <string name="bouchon_piece2_poids">180 kg</string>
+    <string name="bouchon_piece3_numero">P-3109</string>
+    <string name="bouchon_piece3_designation">Poteau HEA 160</string>
+    <string name="bouchon_piece3_poids">150 kg</string>
 </resources>

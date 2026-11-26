@@ -2,7 +2,6 @@
 <resources>
     <!-- Charte T.G.V Livraison (maquettes) -->
     <color name="brique">#A63D11</color>
-    <color name="brique_fonce">#7E2C0A</color>
     <color name="brique_clair">#F7DCCD</color>
     <color name="brun_profond">#3B0F00</color>
 
@@ -12,11 +11,11 @@
     <color name="separateur">#E3DBD5</color>
     <color name="fond">#F5F2EF</color>
     <color name="blanc">#FFFFFF</color>
+    <color name="blanc_75">#BFFFFFFF</color>
 
     <color name="vert_en_ligne">#2E6B30</color>
     <color name="info_fond">#E3EAF8</color>
     <color name="info_texte">#14305E</color>
     <color name="alerte_fond">#FFE7A8</color>
     <color name="alerte_texte">#4A3300</color>
-    <color name="bleu">#2F4FA8</color>
 </resources>
