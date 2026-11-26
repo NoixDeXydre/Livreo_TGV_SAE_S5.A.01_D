@@ -1,6 +1,5 @@
 package fr.tgv.api.controller;
 
-import fr.tgv.api.model.Client;
 import fr.tgv.api.model.Piece;
 import fr.tgv.api.service.PieceService;
 import org.springframework.http.ResponseEntity;
@@ -65,7 +64,7 @@ public class PieceController {
      *              - 201 la pièce a bien été créé
      *              - 400 si la requête est erronée
      */
-    @PostMapping
+    @PutMapping("/addClient")
     public ResponseEntity<Piece> createPiece(@RequestBody Piece piece) {
         try {
             Piece pieceCree = pieceService.createPiece(piece);
@@ -90,7 +89,7 @@ public class PieceController {
      *              - 404 si la pièce à modifier n'as pas été trouvé
      *              - 400 si la requête est erronée
      */
-    @PutMapping("/{id}")
+    @PatchMapping("/updateClient/{id}")
     public ResponseEntity<Piece> updatePiece(@PathVariable String id, @RequestBody Piece piece) {
         try {
             Piece pieceModifie = pieceService.updatePiece(id, piece);
@@ -112,7 +111,7 @@ public class PieceController {
      *              - 204 si la pièce a bien été supprimé
      *              - 404 si la pièce n'as pas été trouvé
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteClient/{id}")
     public ResponseEntity<Piece> deletePiece(@PathVariable String id) {
         if(pieceService.deletePiece(id)) {
             return ResponseEntity.noContent().build();
