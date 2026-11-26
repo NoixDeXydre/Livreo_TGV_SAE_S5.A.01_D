@@ -106,7 +106,6 @@ public class ClientController {
 
     /**
      * Supprime un client
-     *
      * @param id l'id du client à modifier
      * @return Un code
      *              - 204 si le client a bien été supprimé
