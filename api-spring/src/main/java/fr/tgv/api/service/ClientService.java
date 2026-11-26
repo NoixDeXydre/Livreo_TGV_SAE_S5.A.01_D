@@ -67,7 +67,7 @@ public class ClientService {
             throw new IllegalArgumentException("Le client est invalide");
         }
 
-        /* On vérifie que l'utilisateur existe */
+        /* On vérifie que le client existe */
         if (clientRepository.existsById(id)) {
             return null;
         }
@@ -81,7 +81,7 @@ public class ClientService {
      * @return vrai si la suppression a été effectuée, faux sinon
      */
     public boolean deleteClient(String id) {
-        /* On vérifie que l'utilisateur existe */
+        /* On vérifie que le client existe */
         if (clientRepository.existsById(id)) {
             /* Sinon, on renvoie une erreur */
             clientRepository.deleteById(id);
