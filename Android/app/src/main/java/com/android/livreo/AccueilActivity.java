@@ -37,7 +37,8 @@ public class AccueilActivity extends AppCompatActivity {
                 v -> ouvrirColis(ColisActivity.ONGLET_COLIS));
         findViewById(R.id.boutonVoirClients).setOnClickListener(
                 v -> ouvrirColis(ColisActivity.ONGLET_CLIENTS));
-        findViewById(R.id.boutonPlanifier).setOnClickListener(v -> ecranAVenir());
+        findViewById(R.id.boutonPlanifier).setOnClickListener(
+                v -> startActivity(new Intent(this, PlanifActivity.class)));
         findViewById(R.id.boutonDemarrer).setOnClickListener(v -> ecranAVenir());
     }
 
@@ -95,7 +96,7 @@ public class AccueilActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.action_parametres) {
-            ecranAVenir();
+            startActivity(new Intent(this, ParametresActivity.class));
             return true;
         }
         if (id == R.id.action_deconnecter) {

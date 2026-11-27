@@ -82,4 +82,55 @@
     <string name="bouchon_piece3_numero">P-3109</string>
     <string name="bouchon_piece3_designation">Poteau HEA 160</string>
     <string name="bouchon_piece3_poids">150 kg</string>
+
+    <!-- Paramètres (maquette 06) -->
+    <string name="titre_parametres">Paramètres</string>
+    <string name="parametres_serveur">Connexion au serveur</string>
+    <string name="parametres_tester">Tester la connexion</string>
+    <string name="parametres_donnees">Données sur la tablette</string>
+    <string name="parametres_tournee">Tournée enregistrée</string>
+    <string name="parametres_bons">Bons en attente d’envoi</string>
+    <string name="parametres_envoyer_bons">Envoyer les bons en attente</string>
+    <string name="parametres_effacer">Effacer les données locales</string>
+    <string name="parametres_compte">Compte</string>
+    <string name="parametres_chauffeur">Chauffeur connecté</string>
+    <string name="test_connexion_titre">Test de connexion</string>
+    <!-- Bouchon : contenu de la maquette -->
+    <string name="bouchon_parametres_statut">En ligne · dernier test à 7 h 42</string>
+    <string name="bouchon_parametres_tournee">jeu. 1 oct., 7 h 42</string>
+    <string name="bouchon_parametres_bons">1</string>
+    <string name="bouchon_parametres_chauffeur">chauffeur01</string>
+    <string name="bouchon_test_connexion">Réseau : Wi-Fi disponible.\nServeur T.G.V : répond en 124 ms.</string>
+
+    <!-- Planifier la tournée (maquettes 07, 08, 08b, 09) -->
+    <string name="titre_planifier">Planifier la tournée</string>
+    <string name="onglet_manuel">Manuel</string>
+    <string name="onglet_optimise">Optimisé</string>
+    <string name="planif_depart">Point de départ et d’arrivée</string>
+    <string-array name="points_depart">
+        <item>@string/atelier_principal</item>
+        <item>@string/atelier_2</item>
+    </string-array>
+    <string name="planif_info_manuel">Le chargement reste par poids décroissants. Vous choisissez seulement l’ordre de passage chez les clients.</string>
+    <string name="planif_retour">Retour au point de départ après le dernier client.</string>
+    <string name="planif_distance">Distance estimée</string>
+    <string name="planif_valider">Valider cet ordre</string>
+    <string name="monter_arret">Monter %1$s</string>
+    <string name="descendre_arret">Descendre %1$s</string>
+    <string name="planif_algorithme">Algorithme</string>
+    <string name="algo_exacte_equipe">Exacte — codée par l’équipe</string>
+    <string name="algo_exacte_equipe_diff">Difficulté faible · 120 ordres possibles · &lt; 1 s</string>
+    <string name="algo_exacte_lib">Exacte — bibliothèque existante</string>
+    <string name="algo_exacte_lib_diff">Difficulté faible · &lt; 1 s</string>
+    <string name="algo_approchee">Approchée — codée par l’équipe</string>
+    <string name="algo_approchee_diff">Difficulté très faible · instantané</string>
+    <string name="planif_en_ligne">En ligne : le calcul est fait sur le serveur.</string>
+    <string name="planif_bandeau_hors_ligne"><b>Hors ligne.</b> Le calcul optimisé se fait sur le serveur : il sera disponible au retour du réseau.</string>
+    <string name="planif_mode_manuel">Planifier en mode manuel</string>
+    <string name="planif_lancer">Lancer le calcul</string>
+    <string name="calcul_titre">Calcul en cours…</string>
+    <string name="calcul_message">Algorithme : %1$s\nDépart : %2$s\nLe serveur évalue les 120 ordres possibles.</string>
+    <!-- Bouchon : distance de l'ordre initial (celui du bouchon) -->
+    <string name="bouchon_planif_distance">106 km</string>
+    <string name="bouchon_planif_taille">Taille du problème : <b>9 colis, 5 clients</b></string>
 </resources>

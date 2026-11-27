@@ -18,4 +18,7 @@
     <color name="info_texte">#14305E</color>
     <color name="alerte_fond">#FFE7A8</color>
     <color name="alerte_texte">#4A3300</color>
+    <!-- Bouton d'action destructrice (Effacer les données locales) -->
+    <color name="danger_fond">#F9DEDC</color>
+    <color name="danger_texte">#8C1D18</color>
 </resources>

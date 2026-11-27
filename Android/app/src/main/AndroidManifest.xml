@@ -33,6 +33,14 @@
         <activity
             android:name=".DetailColisActivity"
             android:exported="false"/>
+
+        <activity
+            android:name=".ParametresActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".PlanifActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
